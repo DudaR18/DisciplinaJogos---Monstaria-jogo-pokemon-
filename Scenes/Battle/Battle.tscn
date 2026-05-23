@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://mphiekgckhk6"]
+
+[ext_resource type="Script" uid="uid://cutu75oe6ftj5" path="res://Scripts/battle.gd" id="1_vr6xi"]
+[ext_resource type="PackedScene" uid="uid://c22w8vhrxd8gw" path="res://Scenes/Creature.tscn" id="1_wvl2i"]
+
+[node name="Battle" type="Node2D" unique_id=798287703]
+script = ExtResource("1_vr6xi")
+
+[node name="PlayerCreature" parent="." unique_id=1290351828 instance=ExtResource("1_wvl2i")]
+creature_name = "FOGO PORRA"
+
+[node name="EnemyCreature" parent="." unique_id=2091657029 instance=ExtResource("1_wvl2i")]
+creature_name = "GRAMINHA"
+creature_type = "grass"
+max_hp = 110
+attack_damage = 15
