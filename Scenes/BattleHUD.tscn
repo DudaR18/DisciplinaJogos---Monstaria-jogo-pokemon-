@@ -14,8 +14,10 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6200"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juv84"]
-bg_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
+bg_color = Color(0.16862746, 0.16862746, 0.7882353, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -73,12 +75,16 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_bxbm0")
 
 [node name="MainBottomLayout" type="HBoxContainer" parent="BottomPanel" unique_id=1976933112]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 24.0
+offset_top = 21.0
+offset_right = 910.0
+offset_bottom = 221.0
 
 [node name="PlayerInfo" type="Panel" parent="BottomPanel/MainBottomLayout" unique_id=172849532]
-custom_minimum_size = Vector2(250, 200)
+custom_minimum_size = Vector2(450, 200)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_u6200")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomPanel/MainBottomLayout/PlayerInfo" unique_id=1465370529]
 layout_mode = 0
@@ -86,20 +92,32 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="foto" type="TextureRect" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=1912710458]
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
+expand_mode = 1
 
 [node name="PlayerName" type="Label" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=1667081937]
 layout_mode = 2
+horizontal_alignment = 1
 
 [node name="PlayerHPBar" type="ProgressBar" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=2054075972]
+custom_minimum_size = Vector2(250, 30)
 layout_mode = 2
+
+[node name="PlayerHPText" type="Label" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=700210570]
+layout_mode = 2
+horizontal_alignment = 1
 
 [node name="combatlog" type="RichTextLabel" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=765065598]
+custom_minimum_size = Vector2(440, 120)
 layout_mode = 2
+scroll_following = true
+justification_flags = 227
 
 [node name="AttackPanel" type="Panel" parent="BottomPanel/MainBottomLayout" unique_id=843976966]
-custom_minimum_size = Vector2(500, 200)
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_juv84")
 
 [node name="AttackGrid" type="GridContainer" parent="BottomPanel/MainBottomLayout/AttackPanel" unique_id=361270948]
@@ -107,6 +125,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 21.0
+offset_right = 19.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
@@ -126,25 +148,26 @@ custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
 
 [node name="EnemyInfo" type="Panel" parent="." unique_id=1063511795]
-custom_minimum_size = Vector2(300, 160)
+custom_minimum_size = Vector2(300, 120)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -1630.0
-offset_top = 40.0
-offset_right = -1590.0
-offset_bottom = 80.0
+offset_left = -313.0
+offset_top = -708.0
+offset_right = -13.0
+offset_bottom = -588.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vag6d")
 
 [node name="EnemyLayout" type="VBoxContainer" parent="EnemyInfo" unique_id=1334024045]
+custom_minimum_size = Vector2(300, 120)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="EnemySprite" type="TextureRect" parent="EnemyInfo/EnemyLayout" unique_id=226958558]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
@@ -153,7 +176,12 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "INIMIGO"
+horizontal_alignment = 1
 
 [node name="EnemyHPBar" type="ProgressBar" parent="EnemyInfo/EnemyLayout" unique_id=414356982]
-custom_minimum_size = Vector2(250, 30)
+custom_minimum_size = Vector2(250, 28)
 layout_mode = 2
+
+[node name="EnemyHPText" type="Label" parent="EnemyInfo/EnemyLayout" unique_id=70677029]
+layout_mode = 2
+horizontal_alignment = 1

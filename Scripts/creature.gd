@@ -11,11 +11,11 @@ var max_hp = 0 #total
 var hp = 0 #durante a batalha
 
 var is_paralyzed = false
-var is_frozen = false
+var paralysis_message_cooldown = false
+var frozen_attack = ""
 var burn_active = false
 
 var attacks = []
-var can_attack = true
 var attack_cooldowns = {}
 
 signal died
@@ -47,23 +47,41 @@ func receive_damage(amount):
 	
 	show_damage_text(amount)
 	
-func attack(target: Creature, attack_data):
-	if not can_attack:
-		return
+func attack(target: Creature, attack_data) -> bool:
 		
 	if attack_cooldowns[attack_data.name] > 0:
 		print("Ataque em cooldown!")
-		return
+		return false
 	
 	if is_paralyzed:
-		print(creature_name, " está paralisado!")
-		return
-	
-	if is_frozen:
-		print(creature_name, " está congelado!")
-		return
 		
-	can_attack = false
+		if not paralysis_message_cooldown:
+			paralysis_message_cooldown = true
+
+			var battle = get_parent()
+
+			battle.hud.add_log(
+				creature_name +
+				" está paralisado!"
+			)
+
+			await get_tree().create_timer(1.0).timeout
+
+			paralysis_message_cooldown = false
+
+		return false
+		
+	if attack_data.name == frozen_attack:
+		var battle = get_parent()
+
+		battle.hud.add_log(
+			creature_name +
+			" não pode usar " +
+			attack_data.name +
+			" porque está congelado!"
+		)
+
+		return false
 	
 	var final_damage = calculate_damage(
 		target,
@@ -75,36 +93,49 @@ func attack(target: Creature, attack_data):
 	
 	target.apply_effect(attack_data.effect, self)
 	
+	var battle = get_parent()
+
+	if battle.has_method("show_status_log"):
+		battle.show_status_log(
+			self,
+			target,
+			attack_data
+		)
+		
 	print(creature_name, " usou ", attack_data.name)
 	
 	attack_cooldowns[attack_data.name] = attack_data.cooldown
 	
-	await get_tree().create_timer(attack_data.cooldown).timeout
-	
-	can_attack = true
+	return true
 	
 func calculate_damage(target: Creature, base_damage, attack_type):
-	var multiplier = 1.0
-	
-	if attack_type == "fire" and target.creature_type == "grass": 
-		multiplier = 1.5
-		
-	elif attack_type == "grass" and target.creature_type == "water": 
-		multiplier = 1.5
-		
-	elif attack_type == "water" and target.creature_type == "fire": 
-		multiplier = 1.5
-	
-	elif attack_type == target.creature_type:
-		multiplier = 1.0
-		
-	else:
-		multiplier = 0.5
-		
+
+	var multiplier = get_type_multiplier(
+		target,
+		attack_type
+	)
+
 	return int(base_damage * multiplier)
 	
+func get_type_multiplier(target, attack_type):
+
+	if attack_type == "fire" and target.creature_type == "grass":
+		return 1.5
+		
+	elif attack_type == "grass" and target.creature_type == "water":
+		return 1.5
+		
+	elif attack_type == "water" and target.creature_type == "fire":
+		return 1.5
+		
+	elif attack_type == target.creature_type:
+		return 1.0
+		
+	else:
+		return 0.5
+		
 # Chama um func de efeito pra aplicar
-func apply_effect(effect_name, attacker):
+func apply_effect(effect_name, _attacker):
 	
 	match effect_name:
 		
@@ -130,22 +161,45 @@ func apply_burn():
 		await get_tree().create_timer(1.0).timeout
 		
 		receive_damage(2)
-		
-		print(creature_name, " sofreu burn!")
+
+		var battle = get_parent()
+
+		battle.hud.add_log(
+			"🔥 " +
+			creature_name +
+			" sofreu 2 de dano de burn!"
+		)
 		
 		
 	burn_active = false
 	
 # Aplica congelamento (agua)
 func apply_freeze():
+	var available_attacks = []
 	
-	is_frozen = true
-	
-	print(creature_name, " congelado e não pode usar uma habilidade!")
-	
-	await get_tree().create_timer(3.0).timeout
-	
-	is_frozen = false
+	for attack_data in attacks:
+		
+		if attack_data.name != "Arranhar":
+			available_attacks.append(attack_data)
+
+	if available_attacks.size() <= 0:
+		return
+
+	var selected_attack = available_attacks.pick_random()
+
+	frozen_attack = selected_attack.name
+
+	print(
+		creature_name +
+		" teve o ataque " +
+		frozen_attack +
+		" congelado!"
+	)
+
+
+	await get_tree().create_timer(5.0).timeout
+
+	frozen_attack = ""
 	
 # Aplica paralisia (grama)
 func apply_paralyze():
@@ -186,8 +240,8 @@ func load_creature_data():
 		
 		sprite.texture = load(data.sprite)
 		
-	for attack in attacks:
-		attack_cooldowns[attack.name] = 0.0
+	for attack_data in attacks:
+		attack_cooldowns[attack_data.name] = 0.0
 	
 func show_damage_text(amount):
 	
