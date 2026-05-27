@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://mphiekgckhk6"]
+
+[ext_resource type="Script" uid="uid://cutu75oe6ftj5" path="res://Scripts/battle.gd" id="1_vr6xi"]
+[ext_resource type="PackedScene" uid="uid://c22w8vhrxd8gw" path="res://Scenes/Creature.tscn" id="1_wvl2i"]
+[ext_resource type="PackedScene" uid="uid://c4lyn1kti7xc" path="res://Scenes/BattleHUD.tscn" id="3_2h7oj"]
+
+[node name="Battle" type="Node2D" unique_id=798287703]
+script = ExtResource("1_vr6xi")
+
+[node name="PlayerCreature" parent="." unique_id=1290351828 instance=ExtResource("1_wvl2i")]
+
+[node name="EnemyCreature" parent="." unique_id=2091657029 instance=ExtResource("1_wvl2i")]
+creature_id = "leafbat"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1943694037]
+
+[node name="BattleHud" parent="CanvasLayer" unique_id=666301539 instance=ExtResource("3_2h7oj")]

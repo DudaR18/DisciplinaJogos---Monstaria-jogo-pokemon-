@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://c4lyn1kti7xc"]
+
+[ext_resource type="Script" uid="uid://b1sauie7jtmr0" path="res://Scripts/battle_hud.gd" id="1_hvom7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxbm0"]
+bg_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.80532265, 0.79794115, 0.79977965, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juv84"]
+bg_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kbtm"]
+bg_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vag6d"]
+bg_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="BattleHud" type="Control" unique_id=666301539]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_hvom7")
+
+[node name="BottomPanel" type="Panel" parent="." unique_id=2035563328]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bxbm0")
+
+[node name="MainBottomLayout" type="HBoxContainer" parent="BottomPanel" unique_id=1976933112]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerInfo" type="Panel" parent="BottomPanel/MainBottomLayout" unique_id=172849532]
+custom_minimum_size = Vector2(250, 200)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomPanel/MainBottomLayout/PlayerInfo" unique_id=1465370529]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="foto" type="TextureRect" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=1912710458]
+layout_mode = 2
+
+[node name="PlayerName" type="Label" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=1667081937]
+layout_mode = 2
+
+[node name="PlayerHPBar" type="ProgressBar" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=2054075972]
+layout_mode = 2
+
+[node name="combatlog" type="RichTextLabel" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=765065598]
+layout_mode = 2
+
+[node name="AttackPanel" type="Panel" parent="BottomPanel/MainBottomLayout" unique_id=843976966]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_juv84")
+
+[node name="AttackGrid" type="GridContainer" parent="BottomPanel/MainBottomLayout/AttackPanel" unique_id=361270948]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="Attack1" type="Button" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid" unique_id=174324733]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_0kbtm")
+
+[node name="Attack2" type="Button" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid" unique_id=474758649]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+
+[node name="Attack3" type="Button" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid" unique_id=91078978]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+
+[node name="EnemyInfo" type="Panel" parent="." unique_id=1063511795]
+custom_minimum_size = Vector2(300, 160)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1630.0
+offset_top = 40.0
+offset_right = -1590.0
+offset_bottom = 80.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vag6d")
+
+[node name="EnemyLayout" type="VBoxContainer" parent="EnemyInfo" unique_id=1334024045]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EnemySprite" type="TextureRect" parent="EnemyInfo/EnemyLayout" unique_id=226958558]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnemyName" type="Label" parent="EnemyInfo/EnemyLayout" unique_id=2130968831]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "INIMIGO"
+
+[node name="EnemyHPBar" type="ProgressBar" parent="EnemyInfo/EnemyLayout" unique_id=414356982]
+custom_minimum_size = Vector2(250, 30)
+layout_mode = 2
