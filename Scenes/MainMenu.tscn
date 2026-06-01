@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://c6a17wqgnyhf0"]
+
+[ext_resource type="Script" uid="uid://bhkme13w364fx" path="res://Scripts/main_menu.gd" id="1_tt5f1"]
+[ext_resource type="Texture2D" uid="uid://c6wajo8x8m7ny" path="res://Assets/Sprites/base-fundo-teste.png" id="2_8saeu"]
+[ext_resource type="Texture2D" uid="uid://bdfsvlcvwtn7u" path="res://Assets/Sprites/base-titulo.png" id="2_853f1"]
+[ext_resource type="FontFile" uid="uid://b0mrkdo55qxys" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_ghw46"]
+[ext_resource type="Texture2D" uid="uid://bifs50668ffi8" path="res://Assets/Sprites/base-texto.png" id="5_df05h"]
+
+[node name="MainMenu" type="Control" unique_id=669288636]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 621.0
+offset_top = 338.0
+offset_right = 621.0
+offset_bottom = 338.0
+script = ExtResource("1_tt5f1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2067305566]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -619.0
+offset_top = -337.0
+offset_right = 661.0
+offset_bottom = 383.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1254902, 0.1254902, 0.1882353, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=17915552]
+layout_mode = 0
+offset_left = -619.0
+offset_top = -337.0
+offset_right = 661.0
+offset_bottom = 383.0
+texture = ExtResource("2_8saeu")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=501501274]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=69277970]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer" unique_id=103544249]
+visible = false
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 2
+texture = ExtResource("2_853f1")
+expand_mode = 1
+
+[node name="Monstaria" type="Label" parent="CenterContainer/VBoxContainer" unique_id=62288564]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.073586054, 0.5380276, 0.13781732, 1)
+theme_override_colors/font_outline_color = Color(0.1000228, 0.14706811, 0.2570162, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_ghw46")
+theme_override_font_sizes/font_size = 115
+text = "Monstaria"
+horizontal_alignment = 1
+
+[node name="Subtittle" type="Label" parent="CenterContainer/VBoxContainer" unique_id=579571833]
+visible = false
+layout_mode = 2
+text = "subtituloaqio"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1627533629]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.1000228, 0.14706811, 0.2570162, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_ghw46")
+theme_override_font_sizes/font_size = 30
+text = "Jogar"
+icon = ExtResource("5_df05h")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=776958723]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_outline_color = Color(0.1000228, 0.14706811, 0.2570162, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_ghw46")
+theme_override_font_sizes/font_size = 30
+text = "Sair"
+icon = ExtResource("5_df05h")
+flat = true
+icon_alignment = 1
+expand_icon = true

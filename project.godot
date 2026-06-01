@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Monstaria"
-run/main_scene="uid://mphiekgckhk6"
+run/main_scene="uid://c6a17wqgnyhf0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -55,4 +55,5 @@ e={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"

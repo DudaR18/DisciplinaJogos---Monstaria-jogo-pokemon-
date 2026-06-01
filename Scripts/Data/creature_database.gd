@@ -4,7 +4,7 @@ const CREATURES = {
 
 	"flameling": {
 		"name": "Flameling",
-		"type": "fire",
+		"type": "fogo",
 		"max_hp": 120,
 		"sprite": "res://Assets/Sprites/fogo_frente.png",
 		
@@ -19,7 +19,7 @@ const CREATURES = {
 	
 	"leafbat": {
 		"name": "Leafbat",
-		"type": "grass",
+		"type": "planta",
 		"max_hp": 140,
 		"sprite": "res://Assets/Sprites/planta.png",
 		
@@ -34,9 +34,9 @@ const CREATURES = {
 	
 	"aquary": {
 		"name": "Aquary",
-		"type": "water",
+		"type": "água",
 		"max_hp": 110,
-		"sprite": "res://Assets/Sprites/agua_f.png",
+		"sprite": "res://Assets/Sprites/base-aquary.png",
 		
 		"attacks": [
 			"scratch",

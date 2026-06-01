@@ -176,7 +176,9 @@ func show_status_log(attacker, target, attack_data):
 			)
 
 func on_switch_pressed():
-
+	
+	get_tree().paused = true
+	
 	if switch_menu_open:
 		return
 
@@ -188,7 +190,7 @@ func on_switch_pressed():
 
 	var switch_menu = switch_scene.instantiate()
 
-	add_child(switch_menu)
+	$CanvasLayer.add_child(switch_menu)
 
 	switch_menu.tree_exited.connect(func():
 		switch_menu_open = false
@@ -198,12 +200,14 @@ func on_run_pressed():
 	show_result_screen(false)
 
 func show_result_screen(victory):
+	get_tree().paused = true
+	
 	var result_scene = preload(
 		"res://Scenes/ResultScreen.tscn"
 	)
 
 	var result_screen = result_scene.instantiate()
 
-	add_child(result_screen)
+	$CanvasLayer.add_child(result_screen)
 
 	result_screen.setup(victory)

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Creature
 
+@export var is_enemy := false
 @export var creature_id = "flameling"
 @onready var sprite = $Sprite2D
 
@@ -22,6 +23,9 @@ signal died
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if is_enemy:
+		$Sprite2D.flip_h = true
+		
 	load_creature_data()
 	hp = max_hp
 
@@ -38,6 +42,8 @@ func _process(delta: float) -> void:
 func receive_damage(amount):
 	hp -= amount
 	
+	play_damage_animation()
+	
 	if hp <= 0:
 		hp = 0
 		died.emit()
@@ -48,7 +54,9 @@ func receive_damage(amount):
 	show_damage_text(amount)
 	
 func attack(target: Creature, attack_data) -> bool:
-		
+	
+	play_attack_animation()
+	
 	if attack_cooldowns[attack_data.name] > 0:
 		print("Ataque em cooldown!")
 		return false
@@ -119,13 +127,13 @@ func calculate_damage(target: Creature, base_damage, attack_type):
 	
 func get_type_multiplier(target, attack_type):
 
-	if attack_type == "fire" and target.creature_type == "grass":
+	if attack_type == "fogo" and target.creature_type == "planta":
 		return 1.5
 		
-	elif attack_type == "grass" and target.creature_type == "water":
+	elif attack_type == "planta" and target.creature_type == "água":
 		return 1.5
 		
-	elif attack_type == "water" and target.creature_type == "fire":
+	elif attack_type == "água" and target.creature_type == "fogo":
 		return 1.5
 		
 	elif attack_type == target.creature_type:
@@ -139,13 +147,13 @@ func apply_effect(effect_name, _attacker):
 	
 	match effect_name:
 		
-		"burn":
+		"queimar":
 			apply_burn()
 			
-		"freeze":
+		"congelar":
 			apply_freeze()
 			
-		"paralyze":
+		"paralizar":
 			apply_paralyze()
 
 # Aplica paralisia (fogo)
@@ -167,7 +175,7 @@ func apply_burn():
 		battle.hud.add_log(
 			"🔥 " +
 			creature_name +
-			" sofreu 2 de dano de burn!"
+			" sofreu 2 de dano ao queimar!"
 		)
 		
 		
@@ -214,7 +222,6 @@ func apply_paralyze():
 
 # ========= Carregar creatures prontas ============
 func load_creature_data():
-
 	var database = preload("res://Scripts/Data/creature_database.gd")
 	
 	if not database.CREATURES.has(creature_id):
@@ -244,7 +251,6 @@ func load_creature_data():
 		attack_cooldowns[attack_data.name] = 0.0
 	
 func show_damage_text(amount):
-	
 	var damage_scene = preload("res://Scenes/DamageText.tscn")
 	var damage_text = damage_scene.instantiate()
 	
@@ -253,3 +259,35 @@ func show_damage_text(amount):
 	damage_text.global_position = global_position
 	
 	damage_text.show_damage(amount)
+
+func play_attack_animation():
+
+	var original_x = position.x
+	var direction = 30
+
+	if is_enemy:
+		direction = -30
+
+	var tween = create_tween()
+
+	tween.tween_property(
+		self,
+		"position:x",
+		original_x + direction,
+		0.1
+	)
+
+	tween.tween_property(
+		self,
+		"position:x",
+		original_x,
+		0.1
+	)
+
+func play_damage_animation():
+
+	modulate = Color.RED
+
+	await get_tree().create_timer(0.1).timeout
+
+	modulate = Color.WHITE

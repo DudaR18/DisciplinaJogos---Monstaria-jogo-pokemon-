@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cutu75oe6ftj5" path="res://Scripts/battle.gd" id="1_vr6xi"]
 [ext_resource type="PackedScene" uid="uid://c22w8vhrxd8gw" path="res://Scenes/Creature.tscn" id="1_wvl2i"]
-[ext_resource type="Texture2D" uid="uid://dibqfa788bhs1" path="res://Assets/Sprites/Filler -2.PNG" id="2_p46lj"]
+[ext_resource type="Texture2D" uid="uid://c6wajo8x8m7ny" path="res://Assets/Sprites/base-fundo-teste.png" id="2_p46lj"]
 [ext_resource type="PackedScene" uid="uid://c4lyn1kti7xc" path="res://Scenes/BattleHUD.tscn" id="3_2h7oj"]
 [ext_resource type="Texture2D" uid="uid://biqhs28cd8q1p" path="res://Assets/Sprites/sombra.png" id="4_1samx"]
 
@@ -15,7 +15,8 @@ script = ExtResource("1_vr6xi")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=670579679]
 show_behind_parent = true
-scale = Vector2(300, 300)
+position = Vector2(600.00073, 212)
+scale = Vector2(13.731874, 9.936873)
 texture = ExtResource("2_p46lj")
 
 [node name="PlayerShadow" type="Sprite2D" parent="." unique_id=1070459800]
@@ -29,8 +30,9 @@ position = Vector2(950, 300)
 texture = ExtResource("4_1samx")
 
 [node name="PlayerCreature" parent="." unique_id=1290351828 instance=ExtResource("1_wvl2i")]
-position = Vector2(350, 370)
+position = Vector2(340, 400)
 scale = Vector2(0.8, 0.8)
+creature_id = "aquary"
 
 [node name="Sprite2D2" type="Sprite2D" parent="PlayerCreature" unique_id=558464749]
 scale = Vector2(0.2, 0.2)
@@ -39,8 +41,9 @@ scale = Vector2(0.2, 0.2)
 shape = SubResource("RectangleShape2D_2h7oj")
 
 [node name="EnemyCreature" parent="." unique_id=2091657029 instance=ExtResource("1_wvl2i")]
-position = Vector2(950, 220)
-scale = Vector2(0.8, 0.8)
+position = Vector2(970, 240)
+scale = Vector2(0.9, 0.9)
+is_enemy = true
 creature_id = "aquary"
 
 [node name="Sprite2D2" type="Sprite2D" parent="EnemyCreature" unique_id=598386548]

@@ -25,7 +25,7 @@ const ATTACKS = {
 	# ========= FIRE =========
 	
 	"fireball": {
-		"name": "Fireball",
+		"name": "Bola de Fogo",
 		"damage": 16,
 		"cooldown": 4.0,
 		"type": "fire",
@@ -33,7 +33,7 @@ const ATTACKS = {
 	},
 	
 	"burn": {
-		"name": "Burn",
+		"name": "Bafo de Dragão",
 		"damage": 0,
 		"cooldown": 6.0,
 		"type": "fire",
@@ -45,7 +45,7 @@ const ATTACKS = {
 	# ========= WATER =========
 	
 	"water_blast": {
-		"name": "Water Blast",
+		"name": "Jato de Água",
 		"damage": 14,
 		"cooldown": 4.0,
 		"type": "water",
@@ -53,7 +53,7 @@ const ATTACKS = {
 	},
 	
 	"freeze": {
-		"name": "Freeze",
+		"name": "Chuva Congelada",
 		"damage": 0,
 		"cooldown": 6.0,
 		"type": "water",
@@ -65,7 +65,7 @@ const ATTACKS = {
 	# ========= GRASS =========
 	
 	"leaf_cut": {
-		"name": "Leaf Cut",
+		"name": "Folha Cortante",
 		"damage": 12,
 		"cooldown": 4.0,
 		"type": "grass",
@@ -73,7 +73,7 @@ const ATTACKS = {
 	},
 	
 	"root": {
-		"name": "Root",
+		"name": "Raízes Paralisantes",
 		"damage": 0,
 		"cooldown": 6.0,
 		"type": "grass",

@@ -1,56 +1,90 @@
 [gd_scene format=3 uid="uid://c4lyn1kti7xc"]
 
 [ext_resource type="Script" uid="uid://b1sauie7jtmr0" path="res://Scripts/battle_hud.gd" id="1_hvom7"]
+[ext_resource type="Texture2D" uid="uid://ishylxh006rc" path="res://Assets/Sprites/base-batalha.png" id="2_vag6d"]
+[ext_resource type="Texture2D" uid="uid://bifs50668ffi8" path="res://Assets/Sprites/base-texto.png" id="3_u6200"]
+[ext_resource type="Texture2D" uid="uid://8oeuhadrbj86" path="res://Assets/Sprites/base-vida.png" id="4_aweg5"]
+[ext_resource type="Texture2D" uid="uid://bq1pisklgiu5r" path="res://Assets/Sprites/base-healthbar_background.png" id="4_k8ulr"]
+[ext_resource type="Texture2D" uid="uid://8ed814juaeuf" path="res://Assets/Sprites/base-cooldown.png" id="4_u6200"]
+[ext_resource type="Texture2D" uid="uid://mcuq8itm2xmu" path="res://Assets/Sprites/base-healthbar_fill.png" id="5_18se0"]
+[ext_resource type="FontFile" uid="uid://cyjyefsgciqle" path="res://Assets/Fonts/BetterVCR 25.09.ttf" id="5_aweg5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxbm0"]
 bg_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.80532265, 0.79794115, 0.79977965, 1)
+draw_center = false
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6200"]
+draw_center = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juv84"]
-bg_color = Color(0.16862746, 0.16862746, 0.7882353, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vag6d"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kbtm"]
-bg_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_guxgc"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u6200"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aweg5"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2w8vd"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k8ulr"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f4shr"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q5utg"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dffyc"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_18se0"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s3s4e"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8hft8"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k2qy7"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fupjr"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x7ph8"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uh0vy"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_17j1w"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lobe2"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q1sfe"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0u2by"]
+texture = ExtResource("3_u6200")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tinq5"]
+texture = ExtResource("3_u6200")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vag6d"]
 bg_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+draw_center = false
 
 [node name="BattleHud" type="Control" unique_id=666301539]
 layout_mode = 3
@@ -72,6 +106,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bxbm0")
+
+[node name="BattleFrame" type="TextureRect" parent="BottomPanel" unique_id=1089228403]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -7.0
+offset_top = -183.0
+offset_right = 1287.0
+offset_bottom = 511.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vag6d")
+expand_mode = 1
 
 [node name="MainBottomLayout" type="HBoxContainer" parent="BottomPanel" unique_id=1976933112]
 layout_mode = 0
@@ -99,19 +145,32 @@ expand_mode = 1
 
 [node name="PlayerName" type="Label" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=1667081937]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_aweg5")
+theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 
-[node name="PlayerHPBar" type="ProgressBar" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=2054075972]
+[node name="PlayerHPBar" type="TextureProgressBar" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=364326191]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("4_k8ulr")
+texture_progress = ExtResource("5_18se0")
+
+[node name="PlayerHPBar2" type="ProgressBar" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=2054075972]
+visible = false
 custom_minimum_size = Vector2(250, 30)
 layout_mode = 2
 
 [node name="PlayerHPText" type="Label" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=700210570]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_aweg5")
 horizontal_alignment = 1
 
 [node name="combatlog" type="RichTextLabel" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=765065598]
-custom_minimum_size = Vector2(440, 95)
+custom_minimum_size = Vector2(440, 88)
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_aweg5")
+bbcode_enabled = true
+text = "[color=#000000] LOG DA BATALHA! [/color]"
 scroll_following = true
 justification_flags = 227
 
@@ -119,27 +178,108 @@ justification_flags = 227
 custom_minimum_size = Vector2(420, 180)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_juv84")
+theme_override_styles/panel = SubResource("StyleBoxTexture_vag6d")
 
 [node name="AttackGrid" type="GridContainer" parent="BottomPanel/MainBottomLayout/AttackPanel" unique_id=361270948]
 layout_mode = 0
-offset_right = 404.0
-offset_bottom = 194.0
+offset_left = 5.0
+offset_top = 19.0
+offset_right = 409.0
+offset_bottom = 213.0
 columns = 2
 
 [node name="Attack1" type="Button" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid" unique_id=174324733]
 custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_0kbtm")
+theme_override_styles/normal = SubResource("StyleBoxTexture_guxgc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_u6200")
+theme_override_styles/hover = SubResource("StyleBoxTexture_aweg5")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_2w8vd")
+
+[node name="Cooldown1" type="TextureProgressBar" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid/Attack1" unique_id=821763182]
+modulate = Color(1, 1, 1, 0.39215687)
+layout_mode = 1
+offset_left = 1.0
+offset_right = 78.0
+offset_bottom = 75.0
+max_value = 10.0
+value = 10.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("4_u6200")
+
+[node name="AttackText" type="Label" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid/Attack1" unique_id=184714215]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 27.0
+offset_right = 174.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("5_aweg5")
+theme_override_font_sizes/font_size = 12
+text = "Q - teste teste teste"
+autowrap_mode = 3
 
 [node name="Attack2" type="Button" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid" unique_id=474758649]
 custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_k8ulr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_f4shr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q5utg")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_dffyc")
+
+[node name="Cooldown2" type="TextureProgressBar" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid/Attack2" unique_id=1171113268]
+modulate = Color(1, 1, 1, 0.39215687)
+layout_mode = 0
+offset_left = -1.0
+offset_right = 76.0
+offset_bottom = 75.0
+max_value = 10.0
+value = 2.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("4_u6200")
+
+[node name="AttackText" type="Label" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid/Attack2" unique_id=1179400816]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 17.0
+offset_right = 183.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("5_aweg5")
+theme_override_font_sizes/font_size = 12
+text = "W - teste teste teste"
+autowrap_mode = 3
 
 [node name="Attack3" type="Button" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid" unique_id=91078978]
 custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_18se0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_s3s4e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8hft8")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_k2qy7")
+
+[node name="Cooldown3" type="TextureProgressBar" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid/Attack3" unique_id=995562322]
+modulate = Color(1, 1, 1, 0.39215687)
+layout_mode = 0
+offset_right = 77.0
+offset_bottom = 75.0
+max_value = 10.0
+value = 10.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("4_u6200")
+
+[node name="AttackText" type="Label" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid/Attack3" unique_id=1151570831]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 17.0
+offset_right = 182.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("5_aweg5")
+theme_override_font_sizes/font_size = 12
+text = "E - teste teste teste"
+autowrap_mode = 3
 
 [node name="ActionButtons" type="HBoxContainer" parent="BottomPanel/MainBottomLayout" unique_id=1880532045]
 layout_mode = 2
@@ -147,12 +287,26 @@ layout_mode = 2
 [node name="SwitchButton" type="Button" parent="BottomPanel/MainBottomLayout/ActionButtons" unique_id=445679409]
 custom_minimum_size = Vector2(180, 55)
 layout_mode = 2
-text = "1- Trocar criatura"
+theme_override_fonts/font = ExtResource("5_aweg5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxTexture_fupjr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_x7ph8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_uh0vy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_17j1w")
+text = "1- Trocar 
+criatura"
 
 [node name="RunButton" type="Button" parent="BottomPanel/MainBottomLayout/ActionButtons" unique_id=1872945582]
 custom_minimum_size = Vector2(180, 55)
 layout_mode = 2
-text = "2- Fugir da batalha"
+theme_override_fonts/font = ExtResource("5_aweg5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxTexture_lobe2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_q1sfe")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0u2by")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_tinq5")
+text = "2- Fugir da 
+batalha"
 
 [node name="EnemyInfo" type="Panel" parent="." unique_id=1063511795]
 custom_minimum_size = Vector2(300, 120)
@@ -167,11 +321,23 @@ offset_bottom = -588.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vag6d")
 
+[node name="EnemyFrame" type="TextureRect" parent="EnemyInfo" unique_id=454615636]
+custom_minimum_size = Vector2(350, 140)
+layout_mode = 0
+offset_left = -176.0
+offset_top = -145.0
+offset_right = 338.0
+offset_bottom = 367.0
+texture = ExtResource("4_aweg5")
+expand_mode = 1
+
 [node name="EnemyLayout" type="VBoxContainer" parent="EnemyInfo" unique_id=1334024045]
 custom_minimum_size = Vector2(300, 120)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -127.0
+offset_top = -8.0
+offset_right = 269.0
+offset_bottom = 125.0
 
 [node name="EnemySprite" type="TextureRect" parent="EnemyInfo/EnemyLayout" unique_id=226958558]
 custom_minimum_size = Vector2(10, 10)
@@ -181,14 +347,23 @@ stretch_mode = 5
 
 [node name="EnemyName" type="Label" parent="EnemyInfo/EnemyLayout" unique_id=2130968831]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_aweg5")
 theme_override_font_sizes/font_size = 24
 text = "INIMIGO"
 horizontal_alignment = 1
 
-[node name="EnemyHPBar" type="ProgressBar" parent="EnemyInfo/EnemyLayout" unique_id=414356982]
+[node name="EnemyHPBar" type="TextureProgressBar" parent="EnemyInfo/EnemyLayout" unique_id=1093195172]
+layout_mode = 2
+page = 100.0
+texture_under = ExtResource("4_k8ulr")
+texture_progress = ExtResource("5_18se0")
+
+[node name="EnemyHPBar2" type="ProgressBar" parent="EnemyInfo/EnemyLayout" unique_id=414356982]
+visible = false
 custom_minimum_size = Vector2(250, 28)
 layout_mode = 2
 
 [node name="EnemyHPText" type="Label" parent="EnemyInfo/EnemyLayout" unique_id=70677029]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_aweg5")
 horizontal_alignment = 1
