@@ -6,7 +6,7 @@ const CREATURES = {
 		"name": "Flameling",
 		"type": "fogo",
 		"max_hp": 120,
-		"sprite": "res://Assets/Sprites/fogo_frente.png",
+		"sprite": "res://Assets/Sprites/base-flameling.png",
 		
 		"attacks": [
 			"scratch",
@@ -21,7 +21,7 @@ const CREATURES = {
 		"name": "Leafbat",
 		"type": "planta",
 		"max_hp": 140,
-		"sprite": "res://Assets/Sprites/planta.png",
+		"sprite": "res://Assets/Sprites/base-leafbat.png",
 		
 		"attacks": [
 			"bite",

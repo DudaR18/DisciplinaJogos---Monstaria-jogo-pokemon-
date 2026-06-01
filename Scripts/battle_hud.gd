@@ -22,11 +22,13 @@ signal run_pressed
 @onready var player_hp_bar = $BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer/PlayerHPBar
 @onready var player_name = $BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer/PlayerName
 @onready var player_hp_text = $BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer/PlayerHPText
+@onready var player_type = $BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer/PlayerType
 
 @onready var enemy_hp_bar = $EnemyInfo/EnemyLayout/EnemyHPBar
 @onready var enemy_name = $EnemyInfo/EnemyLayout/EnemyName
 @onready var enemy_sprite = $EnemyInfo/EnemyLayout/EnemySprite
 @onready var enemy_hp_text = $EnemyInfo/EnemyLayout/EnemyHPText
+@onready var enemy_type = $EnemyInfo/EnemyLayout/EnemyType
 
 @onready var combat_log = $BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer/combatlog
 
@@ -36,12 +38,13 @@ var player_ref
 var displayed_player_hp = 0
 var displayed_enemy_hp = 0
 
-func setup(player):
+func setup(player, enemy):
 
 	player_ref = player
 	current_attacks = player.attacks
 	
 	displayed_player_hp = player.max_hp
+	displayed_enemy_hp = enemy.max_hp
 	
 	if current_attacks.size() > 0:
 		attack1_text.text = "Q - " + current_attacks[0].name
@@ -168,14 +171,27 @@ func update_battle_info(player, enemy):
 		str(player.max_hp)
 	)
 	
-	player_name.text = (
-		player.creature_name +
-		" - " +
-		player.creature_type.capitalize()
-	)
+	player_name.text = player.creature_name
+	player_type.text = player.creature_type.capitalize()
+	
+	match player.creature_type:
+		"água":
+			player_type.modulate = Color("#4AA3FF")
+
+		"fogo":
+			player_type.modulate = Color("#FF5555")
+
+		"planta":
+			player_type.modulate = Color("#55CC55")
+
+		_:
+			player_type.modulate = Color.WHITE
 	
 	enemy_hp_bar.max_value = enemy.max_hp
-	
+
+	#if displayed_enemy_hp == 0:
+	#	displayed_enemy_hp = enemy.hp
+
 	displayed_enemy_hp = move_toward(
 		displayed_enemy_hp,
 		enemy.hp,
@@ -183,7 +199,11 @@ func update_battle_info(player, enemy):
 	)
 
 	enemy_hp_bar.value = displayed_enemy_hp
-	
+	#print(enemy.hp)
+	#print(enemy.max_hp)
+	#print(enemy_hp_bar.value)
+	#print(enemy_hp_bar.max_value)
+
 	var percent2 = float(enemy.hp) / enemy.max_hp
 	if percent2 > 0.5:
 		enemy_hp_bar.tint_progress = Color.GREEN
@@ -200,11 +220,21 @@ func update_battle_info(player, enemy):
 		str(enemy.max_hp)
 	)
 	
-	enemy_name.text = (
-		enemy.creature_name +
-		" - " +
-		enemy.creature_type.capitalize()
-	)
+	enemy_name.text = enemy.creature_name
+	enemy_type.text = enemy.creature_type.capitalize()
+	
+	match enemy.creature_type:
+		"água":
+			enemy_type.modulate = Color("#4AA3FF")
+
+		"fogo":
+			enemy_type.modulate = Color("#FF5555")
+
+		"planta":
+			enemy_type.modulate = Color("#55CC55")
+
+		_:
+			enemy_type.modulate = Color.WHITE
 	
 	#enemy_sprite.texture = load(enemy.sprite_path)
 	#enemy_sprite.scale.x = -1

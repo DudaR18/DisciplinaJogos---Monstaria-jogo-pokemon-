@@ -134,9 +134,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_u6200")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomPanel/MainBottomLayout/PlayerInfo" unique_id=1465370529]
 layout_mode = 0
-offset_left = 4.0
-offset_right = 444.0
-offset_bottom = 222.0
+offset_left = 3.0
+offset_top = -13.0
+offset_right = 443.0
+offset_bottom = 209.0
 
 [node name="foto" type="TextureRect" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=1912710458]
 custom_minimum_size = Vector2(10, 10)
@@ -147,15 +148,27 @@ expand_mode = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_aweg5")
 theme_override_font_sizes/font_size = 24
+text = "Player"
 horizontal_alignment = 1
+
+[node name="PlayerType" type="Label" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=1138072362]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_aweg5")
+horizontal_alignment = 1
+uppercase = true
 
 [node name="PlayerHPBar" type="TextureProgressBar" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=364326191]
 layout_mode = 2
 value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 8
+stretch_margin_top = 8
+stretch_margin_right = 8
+stretch_margin_bottom = 8
 texture_under = ExtResource("4_k8ulr")
 texture_progress = ExtResource("5_18se0")
 
-[node name="PlayerHPBar2" type="ProgressBar" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=2054075972]
+[node name="PlayerHPBar_old" type="ProgressBar" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=2054075972]
 visible = false
 custom_minimum_size = Vector2(250, 30)
 layout_mode = 2
@@ -324,20 +337,20 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_vag6d")
 [node name="EnemyFrame" type="TextureRect" parent="EnemyInfo" unique_id=454615636]
 custom_minimum_size = Vector2(350, 140)
 layout_mode = 0
-offset_left = -176.0
-offset_top = -145.0
-offset_right = 338.0
-offset_bottom = 367.0
+offset_left = -150.0
+offset_top = -130.0
+offset_right = 335.0
+offset_bottom = 382.0
 texture = ExtResource("4_aweg5")
 expand_mode = 1
 
 [node name="EnemyLayout" type="VBoxContainer" parent="EnemyInfo" unique_id=1334024045]
 custom_minimum_size = Vector2(300, 120)
 layout_mode = 0
-offset_left = -127.0
-offset_top = -8.0
-offset_right = 269.0
-offset_bottom = 125.0
+offset_left = -112.0
+offset_top = 5.0
+offset_right = 284.0
+offset_bottom = 138.0
 
 [node name="EnemySprite" type="TextureRect" parent="EnemyInfo/EnemyLayout" unique_id=226958558]
 custom_minimum_size = Vector2(10, 10)
@@ -352,13 +365,25 @@ theme_override_font_sizes/font_size = 24
 text = "INIMIGO"
 horizontal_alignment = 1
 
+[node name="EnemyType" type="Label" parent="EnemyInfo/EnemyLayout" unique_id=1445881008]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_aweg5")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+uppercase = true
+
 [node name="EnemyHPBar" type="TextureProgressBar" parent="EnemyInfo/EnemyLayout" unique_id=1093195172]
 layout_mode = 2
 page = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 8
+stretch_margin_top = 8
+stretch_margin_right = 8
+stretch_margin_bottom = 8
 texture_under = ExtResource("4_k8ulr")
 texture_progress = ExtResource("5_18se0")
 
-[node name="EnemyHPBar2" type="ProgressBar" parent="EnemyInfo/EnemyLayout" unique_id=414356982]
+[node name="EnemyHPBar_old" type="ProgressBar" parent="EnemyInfo/EnemyLayout" unique_id=414356982]
 visible = false
 custom_minimum_size = Vector2(250, 28)
 layout_mode = 2

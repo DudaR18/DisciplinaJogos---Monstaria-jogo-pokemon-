@@ -18,6 +18,7 @@ var burn_active = false
 
 var attacks = []
 var attack_cooldowns = {}
+var is_animating_attack = false
 
 signal died
 
@@ -46,6 +47,7 @@ func receive_damage(amount):
 	
 	if hp <= 0:
 		hp = 0
+		await play_death_animation()
 		died.emit()
 		
 	print(creature_name, " recebeu ", amount, " de dano")
@@ -262,7 +264,13 @@ func show_damage_text(amount):
 
 func play_attack_animation():
 
+	if is_animating_attack:
+		return
+
+	is_animating_attack = true
+
 	var original_x = position.x
+
 	var direction = 30
 
 	if is_enemy:
@@ -284,10 +292,66 @@ func play_attack_animation():
 		0.1
 	)
 
+	await tween.finished
+
+	is_animating_attack = false
+
 func play_damage_animation():
+
+	var original_pos = position
 
 	modulate = Color.RED
 
-	await get_tree().create_timer(0.1).timeout
+	var tween = create_tween()
+
+	tween.tween_property(
+		self,
+		"position",
+		original_pos + Vector2(8, 0),
+		0.08
+	)
+
+	tween.tween_property(
+		self,
+		"position",
+		original_pos + Vector2(-8, 0),
+		0.08
+	)
+
+	tween.tween_property(
+		self,
+		"position",
+		original_pos,
+		0.08
+	)
+
+	await tween.finished
+
+	await get_tree().create_timer(0.05).timeout
 
 	modulate = Color.WHITE
+	await get_tree().create_timer(0.05).timeout
+
+	modulate = Color.RED
+	await get_tree().create_timer(0.05).timeout
+
+	modulate = Color.WHITE
+
+func play_death_animation():
+	var tween = create_tween()
+
+	tween.parallel().tween_property(
+		self,
+		"scale",
+		Vector2.ZERO,
+		0.5
+	)
+
+	tween.parallel().tween_property(
+		self,
+		"modulate:a",
+		0.0,
+		0.5
+	)
+
+	await tween.finished

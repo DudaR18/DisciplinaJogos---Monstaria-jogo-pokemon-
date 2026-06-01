@@ -11,7 +11,7 @@ func _ready():
 	player.died.connect(on_player_died)
 	enemy.died.connect(on_enemy_died)
 	
-	hud.setup(player)
+	hud.setup(player, enemy)
 	hud.attack_selected.connect(on_attack_selected)
 
 	hud.switch_pressed.connect(on_switch_pressed)
