@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://d1e4bn7vlhqhn"]
+
+[ext_resource type="Script" uid="uid://da32i4tlnsure" path="res://Scripts/switch_menu.gd" id="1_w228l"]
+
+[node name="SwitchMenu" type="Control" unique_id=373929231]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 614.0
+offset_top = 304.0
+offset_right = 614.0
+offset_bottom = 304.0
+script = ExtResource("1_w228l")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=189435107]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6666667)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1108903008]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1401459069]
+custom_minimum_size = Vector2(500, 250)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel" unique_id=1225891992]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=525673013]
+layout_mode = 2
+text = "Troca de Creature"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=1172852627]
+layout_mode = 2
+text = "Ainda não implementado :)"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=479677945]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+text = "Fechar"

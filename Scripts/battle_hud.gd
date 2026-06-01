@@ -1,10 +1,15 @@
 extends Control
 
 signal attack_selected
+signal switch_pressed
+signal run_pressed
 
 @onready var attack1 = $BottomPanel/MainBottomLayout/AttackPanel/AttackGrid/Attack1
 @onready var attack2 = $BottomPanel/MainBottomLayout/AttackPanel/AttackGrid/Attack2
 @onready var attack3 = $BottomPanel/MainBottomLayout/AttackPanel/AttackGrid/Attack3
+
+@onready var switch_button = $BottomPanel/MainBottomLayout/ActionButtons/SwitchButton
+@onready var run_button = $BottomPanel/MainBottomLayout/ActionButtons/RunButton
 
 @onready var player_hp_bar = $BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer/PlayerHPBar
 @onready var player_name = $BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer/PlayerName
@@ -134,6 +139,14 @@ func _ready():
 	
 	attack3.pressed.connect(func():
 		attack_selected.emit(2)
+	)
+
+	switch_button.pressed.connect(func():
+		switch_pressed.emit()
+	)
+
+	run_button.pressed.connect(func():
+		run_pressed.emit()
 	)
 
 func update_battle_info(player, enemy):

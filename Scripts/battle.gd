@@ -4,6 +4,8 @@ extends Node2D
 @onready var enemy = $EnemyCreature
 @onready var hud = $CanvasLayer/BattleHud
 
+var switch_menu_open = false
+
 func _ready():
 	enemy_ai()
 	player.died.connect(on_player_died)
@@ -12,12 +14,14 @@ func _ready():
 	hud.setup(player)
 	hud.attack_selected.connect(on_attack_selected)
 
+	hud.switch_pressed.connect(on_switch_pressed)
+	hud.run_pressed.connect(on_run_pressed)
+
 func on_player_died():
-	print("VOCÊ PERDEU, MELHORE.")
-	
+	show_result_screen(false)
 	
 func on_enemy_died():
-	print("SEU INIMIGO FOI DERROTADO! VOCÊ VENCEU O JOGO!")
+	show_result_screen(true)
 	
 func _process(_delta):
 #	if Input.is_action_just_pressed("ui_select"):
@@ -36,6 +40,12 @@ func _process(_delta):
 		on_attack_selected(2)
 	
 	hud.update_battle_info(player, enemy)
+	
+	if Input.is_action_just_pressed("switch creature"):
+		on_switch_pressed()
+
+	if Input.is_action_just_pressed("run battle"):
+		on_run_pressed()
 	
 func enemy_ai():
 
@@ -164,3 +174,36 @@ func show_status_log(attacker, target, attack_data):
 				target.creature_name +
 				" está paralisado!"
 			)
+
+func on_switch_pressed():
+
+	if switch_menu_open:
+		return
+
+	switch_menu_open = true
+
+	var switch_scene = preload(
+		"res://Scenes/SwitchMenu.tscn"
+	)
+
+	var switch_menu = switch_scene.instantiate()
+
+	add_child(switch_menu)
+
+	switch_menu.tree_exited.connect(func():
+		switch_menu_open = false
+	)
+	
+func on_run_pressed():
+	show_result_screen(false)
+
+func show_result_screen(victory):
+	var result_scene = preload(
+		"res://Scenes/ResultScreen.tscn"
+	)
+
+	var result_screen = result_scene.instantiate()
+
+	add_child(result_screen)
+
+	result_screen.setup(victory)

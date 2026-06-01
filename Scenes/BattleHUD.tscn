@@ -88,8 +88,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_u6200")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BottomPanel/MainBottomLayout/PlayerInfo" unique_id=1465370529]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 4.0
+offset_right = 444.0
+offset_bottom = 222.0
 
 [node name="foto" type="TextureRect" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=1912710458]
 custom_minimum_size = Vector2(10, 10)
@@ -109,28 +110,21 @@ layout_mode = 2
 horizontal_alignment = 1
 
 [node name="combatlog" type="RichTextLabel" parent="BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer" unique_id=765065598]
-custom_minimum_size = Vector2(440, 120)
+custom_minimum_size = Vector2(440, 95)
 layout_mode = 2
 scroll_following = true
 justification_flags = 227
 
 [node name="AttackPanel" type="Panel" parent="BottomPanel/MainBottomLayout" unique_id=843976966]
-custom_minimum_size = Vector2(400, 200)
+custom_minimum_size = Vector2(420, 180)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_juv84")
 
 [node name="AttackGrid" type="GridContainer" parent="BottomPanel/MainBottomLayout/AttackPanel" unique_id=361270948]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = 21.0
-offset_right = 19.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_right = 404.0
+offset_bottom = 194.0
 columns = 2
 
 [node name="Attack1" type="Button" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid" unique_id=174324733]
@@ -146,6 +140,19 @@ layout_mode = 2
 [node name="Attack3" type="Button" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid" unique_id=91078978]
 custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
+
+[node name="ActionButtons" type="HBoxContainer" parent="BottomPanel/MainBottomLayout" unique_id=1880532045]
+layout_mode = 2
+
+[node name="SwitchButton" type="Button" parent="BottomPanel/MainBottomLayout/ActionButtons" unique_id=445679409]
+custom_minimum_size = Vector2(180, 55)
+layout_mode = 2
+text = "1- Trocar criatura"
+
+[node name="RunButton" type="Button" parent="BottomPanel/MainBottomLayout/ActionButtons" unique_id=1872945582]
+custom_minimum_size = Vector2(180, 55)
+layout_mode = 2
+text = "2- Fugir da batalha"
 
 [node name="EnemyInfo" type="Panel" parent="." unique_id=1063511795]
 custom_minimum_size = Vector2(300, 120)
