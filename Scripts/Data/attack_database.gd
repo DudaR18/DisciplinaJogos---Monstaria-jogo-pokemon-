@@ -7,7 +7,7 @@ const ATTACKS = {
 	"scratch": {
 		"name": "Arranhar",
 		"damage": 8,
-		"cooldown": 1.0,
+		"cooldown": 2.5,
 		"type": "normal",
 		"effect": "none"
 	},
@@ -15,7 +15,7 @@ const ATTACKS = {
 	"bite": {
 		"name": "Mordida",
 		"damage": 10,
-		"cooldown": 1.5,
+		"cooldown": 2.5,
 		"type": "normal",
 		"effect": "none"
 	},
@@ -27,16 +27,16 @@ const ATTACKS = {
 	"fireball": {
 		"name": "Bola de Fogo",
 		"damage": 16,
-		"cooldown": 4.0,
-		"type": "fire",
+		"cooldown": 6.0,
+		"type": "fogo",
 		"effect": "none"
 	},
 	
 	"burn": {
 		"name": "Bafo de Dragão",
 		"damage": 0,
-		"cooldown": 6.0,
-		"type": "fire",
+		"cooldown": 8.0,
+		"type": "fogo",
 		"effect": "burn"
 	},
 	
@@ -47,16 +47,16 @@ const ATTACKS = {
 	"water_blast": {
 		"name": "Jato de Água",
 		"damage": 14,
-		"cooldown": 4.0,
-		"type": "water",
+		"cooldown": 6.0,
+		"type": "água",
 		"effect": "none"
 	},
 	
 	"freeze": {
 		"name": "Chuva Congelada",
 		"damage": 0,
-		"cooldown": 6.0,
-		"type": "water",
+		"cooldown": 8.0,
+		"type": "água",
 		"effect": "freeze"
 	},
 	
@@ -66,17 +66,17 @@ const ATTACKS = {
 	
 	"leaf_cut": {
 		"name": "Folha Cortante",
-		"damage": 12,
-		"cooldown": 4.0,
-		"type": "grass",
+		"damage": 802,
+		"cooldown": 0.0,
+		"type": "planta",
 		"effect": "none"
 	},
 	
 	"root": {
 		"name": "Raízes Paralisantes",
 		"damage": 0,
-		"cooldown": 6.0,
-		"type": "grass",
+		"cooldown": 8.0,
+		"type": "planta",
 		"effect": "paralyze"
 	}
 }

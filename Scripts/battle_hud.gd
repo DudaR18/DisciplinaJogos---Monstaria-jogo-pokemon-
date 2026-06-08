@@ -45,6 +45,7 @@ func setup(player, enemy):
 	
 	displayed_player_hp = player.max_hp
 	displayed_enemy_hp = enemy.max_hp
+
 	
 	if current_attacks.size() > 0:
 		attack1_text.text = "Q - " + current_attacks[0].name
@@ -144,7 +145,7 @@ func _ready():
 	)
 
 func update_battle_info(player, enemy):
-	
+
 	player_hp_bar.max_value = player.max_hp
 	
 	displayed_player_hp = move_toward(
@@ -198,7 +199,8 @@ func update_battle_info(player, enemy):
 		50
 	)
 
-	enemy_hp_bar.value = displayed_enemy_hp
+	#enemy_hp_bar.value = displayed_enemy_hp
+	enemy_hp_bar.value = enemy.hp
 	#print(enemy.hp)
 	#print(enemy.max_hp)
 	#print(enemy_hp_bar.value)

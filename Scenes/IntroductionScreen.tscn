@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bbjnayl7fwjg3"]
+
+[ext_resource type="Script" uid="uid://cjv8pewmjov5j" path="res://Scripts/introduction_screen.gd" id="1_jjim3"]
+[ext_resource type="Texture2D" uid="uid://c8uem8mn4jckp" path="res://Assets/Sprites/background2.png" id="2_k7tyd"]
+[ext_resource type="FontFile" uid="uid://cyjyefsgciqle" path="res://Assets/Fonts/BetterVCR 25.09.ttf" id="3_k7tyd"]
+[ext_resource type="Texture2D" uid="uid://bhuyvsstq5uk7" path="res://Assets/Sprites/professora.png" id="3_wa0c0"]
+
+[node name="IntroductionScreen" type="Control" unique_id=397158030]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jjim3")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1431638732]
+layout_mode = 0
+offset_right = 1281.0
+offset_bottom = 718.0
+texture = ExtResource("2_k7tyd")
+
+[node name="ProfessorSprite" type="TextureRect" parent="." unique_id=1993328810]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 99.0
+offset_right = 651.0
+offset_bottom = 786.0
+texture = ExtResource("3_wa0c0")
+expand_mode = 5
+
+[node name="DialogueBox" type="Panel" parent="." unique_id=112981790]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 492.0
+offset_right = 1265.0
+offset_bottom = 694.0
+
+[node name="Dialogue" type="Label" parent="DialogueBox" unique_id=1330645683]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 19.0
+offset_right = 1145.0
+offset_bottom = 187.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8627451)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.81960785)
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_k7tyd")
+theme_override_font_sizes/font_size = 20
+text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Next" type="Button" parent="DialogueBox" unique_id=1836963329]
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 145.0
+offset_right = 1244.0
+offset_bottom = 199.0
+theme_override_fonts/font = ExtResource("3_k7tyd")
+theme_override_font_sizes/font_size = 11
+text = "Próximo..."
+
+[connection signal="pressed" from="DialogueBox/Next" to="." method="_on_next_pressed"]

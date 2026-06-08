@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dv5obpp8ix0g7"]
+
+[ext_resource type="Script" uid="uid://bsqwwikwrjmem" path="res://Scripts/EnemyDialogueScreen.gd" id="1_ogmnu"]
+[ext_resource type="Texture2D" uid="uid://c8uem8mn4jckp" path="res://Assets/Sprites/background2.png" id="2_h5kqo"]
+[ext_resource type="FontFile" uid="uid://cyjyefsgciqle" path="res://Assets/Fonts/BetterVCR 25.09.ttf" id="3_xkxqe"]
+
+[node name="EnemyDialogueScreen" type="Control" unique_id=1718660909]
+layout_mode = 3
+anchor_right = 0.19100001
+anchor_bottom = 0.179
+offset_right = -244.48001
+offset_bottom = -128.88
+script = ExtResource("1_ogmnu")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1753181347]
+layout_mode = 0
+offset_right = 1275.0
+offset_bottom = 716.0
+texture = ExtResource("2_h5kqo")
+
+[node name="EnemySprite" type="TextureRect" parent="." unique_id=1823454495]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 165.0
+offset_right = 730.0
+offset_bottom = 600.0
+
+[node name="DialogueBox" type="Panel" parent="." unique_id=1796318594]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 444.0
+offset_right = 1256.0
+offset_bottom = 694.0
+
+[node name="Dialogue" type="Label" parent="DialogueBox" unique_id=993373826]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 29.0
+offset_right = 1132.0
+offset_bottom = 222.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7019608)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.76862746)
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("3_xkxqe")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Next" type="Button" parent="DialogueBox" unique_id=715104277]
+layout_mode = 0
+offset_left = 1011.0
+offset_top = 184.0
+offset_right = 1201.0
+offset_bottom = 230.0
+text = "Próximo..."
+
+[connection signal="pressed" from="DialogueBox/Next" to="." method="_on_next_pressed"]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dcno4k60t3okr"]
 
 [ext_resource type="Script" uid="uid://cpyml5idjte81" path="res://Scripts/result_screen.gd" id="1_2xpc5"]
+[ext_resource type="FontFile" uid="uid://cyjyefsgciqle" path="res://Assets/Fonts/BetterVCR 25.09.ttf" id="2_cb4n6"]
 
 [node name="ResultScreen" type="Control" unique_id=148177105]
 process_mode = 2
@@ -19,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.6666667)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=970523350]
@@ -28,6 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=740368220]
 layout_mode = 2
@@ -36,14 +39,23 @@ layout_mode = 2
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 39
+theme_override_fonts/font = ExtResource("2_cb4n6")
+theme_override_font_sizes/font_size = 30
 text = "a"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=801569300]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_cb4n6")
 text = "Jogar Novamente"
 
 [node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1396235522]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_cb4n6")
 text = "Menu Principal"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1943508212]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_cb4n6")
+text = "Sair do Jogo"

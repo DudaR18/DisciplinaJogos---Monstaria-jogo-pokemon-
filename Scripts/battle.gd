@@ -7,21 +7,68 @@ extends Node2D
 var switch_menu_open = false
 
 func _ready():
-	enemy_ai()
+
+	GameData.player_index = 0
+
+	player.creature_id = GameData.player_team[
+		GameData.player_index
+	]
+
+	player.load_creature_data()
+
+	GameData.generate_enemy_team(
+		player.creature_type
+	)
+
+	GameData.enemy_index = 0
+
+	enemy.creature_id = GameData.enemy_team[0]
+	enemy.load_creature_data()
+
 	player.died.connect(on_player_died)
 	enemy.died.connect(on_enemy_died)
-	
-	hud.setup(player, enemy)
-	hud.attack_selected.connect(on_attack_selected)
 
+	hud.setup(player, enemy)
+
+	hud.attack_selected.connect(on_attack_selected)
 	hud.switch_pressed.connect(on_switch_pressed)
 	hud.run_pressed.connect(on_run_pressed)
 
+	await player.play_summon_animation()
+	await enemy.play_summon_animation()
+
+	enemy_ai()
+	
+	
 func on_player_died():
-	show_result_screen(false)
+
+	if GameData.player_index < GameData.player_team.size() - 1:
+
+		await spawn_next_player()
+
+	else:
+
+		show_result_screen(false)
 	
 func on_enemy_died():
-	show_result_screen(true)
+
+	print("========")
+	print("ENEMY DIED")
+	print("INDEX:", GameData.enemy_index)
+	print("TEAM:", GameData.enemy_team)
+	print("========")
+
+	if GameData.enemy_index < GameData.enemy_team.size() - 1:
+
+		await spawn_next_enemy()
+
+	else:
+
+		GameData.recruit_options = GameData.enemy_team.duplicate()
+
+		get_tree().change_scene_to_file(
+			"res://Scenes/RecruitScreen.tscn"
+		)
 	
 func _process(_delta):
 #	if Input.is_action_just_pressed("ui_select"):
@@ -31,13 +78,13 @@ func _process(_delta):
 		#player.attack(enemy, player.attacks[0])
 		
 	if Input.is_action_just_pressed("q"):
-		on_attack_selected(0)
+		await on_attack_selected(0)
 
 	if Input.is_action_just_pressed("w"):
-		on_attack_selected(1)
+		await on_attack_selected(1)
 
 	if Input.is_action_just_pressed("e"):
-		on_attack_selected(2)
+		await on_attack_selected(2)
 	
 	hud.update_battle_info(player, enemy)
 	
@@ -56,7 +103,7 @@ func enemy_ai():
 		var random_attack = enemy.attacks.pick_random()
 
 
-		var success = enemy.attack(
+		var success = await enemy.attack(
 			player,
 			random_attack
 		)
@@ -97,7 +144,7 @@ func enemy_ai():
 				effectiveness_text
 			)
 			
-func on_attack_selected(index):
+func on_attack_selected(index) -> void:
 
 	if index >= player.attacks.size():
 		return
@@ -105,7 +152,7 @@ func on_attack_selected(index):
 	var attack_data = player.attacks[index]
 
 	
-	var success = player.attack(
+	var success = await player.attack(
 		enemy,
 		attack_data
 	)
@@ -211,3 +258,59 @@ func show_result_screen(victory):
 	$CanvasLayer.add_child(result_screen)
 
 	result_screen.setup(victory)
+
+func spawn_next_enemy():
+
+	GameData.enemy_index += 1
+
+	enemy.creature_id = GameData.enemy_team[
+		GameData.enemy_index
+	]
+
+	enemy.load_creature_data()
+
+	enemy.hp = enemy.max_hp
+
+	enemy.burn_active = false
+	enemy.is_paralyzed = false
+	enemy.frozen_attack = ""
+
+	enemy.scale = enemy.default_scale
+	enemy.modulate = Color.WHITE
+
+	await enemy.play_summon_animation()
+	
+	enemy_ai()
+
+	hud.add_log(
+		"Inimigo enviou " +
+		enemy.creature_name +
+		"!"
+	)
+
+func spawn_next_player():
+
+	GameData.player_index += 1
+
+	player.creature_id = GameData.player_team[
+		GameData.player_index
+	]
+
+	player.load_creature_data()
+
+	player.hp = player.max_hp
+
+	player.burn_active = false
+	player.is_paralyzed = false
+	player.frozen_attack = ""
+
+	player.scale = player.default_scale
+	player.modulate = Color.WHITE
+
+	await player.play_summon_animation()
+
+	hud.add_log(
+		"Vai, " +
+		player.creature_name +
+		"!"
+	)

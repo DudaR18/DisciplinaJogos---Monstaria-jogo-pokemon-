@@ -6,7 +6,15 @@
 [ext_resource type="FontFile" uid="uid://b0mrkdo55qxys" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_ghw46"]
 [ext_resource type="Texture2D" uid="uid://bifs50668ffi8" path="res://Assets/Sprites/base-texto.png" id="5_df05h"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df05h"]
+bg_color = Color(0, 0, 0, 0.74509805)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8um5k"]
+bg_color = Color(0, 0, 0, 0.74509805)
+
 [node name="MainMenu" type="Control" unique_id=669288636]
+texture_filter = 1
+texture_repeat = 1
 layout_mode = 3
 anchors_preset = 0
 offset_left = 621.0
@@ -78,6 +86,8 @@ theme_override_colors/font_outline_color = Color(0.1000228, 0.14706811, 0.257016
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("4_ghw46")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/pressed = SubResource("StyleBoxFlat_df05h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8um5k")
 text = "Jogar"
 icon = ExtResource("5_df05h")
 flat = true
@@ -92,6 +102,8 @@ theme_override_colors/font_outline_color = Color(0.1000228, 0.14706811, 0.257016
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("4_ghw46")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/pressed = SubResource("StyleBoxFlat_df05h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8um5k")
 text = "Sair"
 icon = ExtResource("5_df05h")
 flat = true

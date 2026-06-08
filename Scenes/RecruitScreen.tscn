@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bf6hy5o45tl1j"]
+
+[ext_resource type="Script" uid="uid://bp40nkh2jg54x" path="res://Scripts/recruit_screen.gd" id="1_gdawd"]
+[ext_resource type="FontFile" uid="uid://cyjyefsgciqle" path="res://Assets/Fonts/BetterVCR 25.09.ttf" id="2_2i6ol"]
+
+[node name="RecruitScreen" type="Control" unique_id=1942075483]
+layout_mode = 3
+anchor_right = 0.469
+anchor_bottom = 0.26900002
+offset_left = 584.0
+offset_top = 254.0
+offset_right = -16.320007
+offset_bottom = 60.319977
+script = ExtResource("1_gdawd")
+
+[node name="Label" type="Label" parent="." unique_id=1834630341]
+layout_mode = 0
+offset_left = -251.0
+offset_top = -100.0
+offset_right = 379.0
+offset_bottom = -42.0
+theme_override_fonts/font = ExtResource("2_2i6ol")
+theme_override_font_sizes/font_size = 40
+text = "Escolha uma criatura:"
+horizontal_alignment = 1
+
+[node name="Escolha1" type="Button" parent="." unique_id=1436343217]
+layout_mode = 0
+offset_left = 80.0
+offset_right = 160.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("2_2i6ol")
+theme_override_font_sizes/font_size = 18
+text = "flameling"
+
+[node name="Escolha2" type="Button" parent="." unique_id=55032726]
+layout_mode = 0
+offset_left = -80.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("2_2i6ol")
+theme_override_font_sizes/font_size = 18
+text = "flameling"
+
+[connection signal="pressed" from="Escolha1" to="." method="_on_escolha_1_pressed"]
+[connection signal="pressed" from="Escolha2" to="." method="_on_escolha_2_pressed"]

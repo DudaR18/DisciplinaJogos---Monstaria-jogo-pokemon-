@@ -1,57 +1,18 @@
 extends Control
 
-@onready var title = $CenterContainer/VBoxContainer/Title
 @onready var restart_button = $CenterContainer/VBoxContainer/RestartButton
 @onready var main_menu_button = $CenterContainer/VBoxContainer/MainMenuButton
 @onready var quit_button = $CenterContainer/VBoxContainer/QuitButton
 
-func setup(victory):
-
-	if victory:
-
-		if GameData.demo_finished:
-			
-			get_tree().paused = false
-			
-			title.text = (
-				"PARABÉNS! Você concluiu todas as batalhas implementadas até o momento. A jornada ainda está em desenvolvimento!"
-			)
-
-		elif GameData.became_master:
-
-			title.text = (
-				"VOCÊ SE TORNOU UM MESTRE DAS CRIATURAS!"
-			)
-
-		else:
-
-			title.text = "VOCÊ VENCEU!"
-
-	else:
-
-		title.text = (
-			"FIM DE JOGO:\nVOCÊ PERDEU A BATALHA"
-		)
-
-		restart_button.text = "Tentar Novamente"
-		
 func _ready():
 
-	if GameData.demo_finished:
-
-		setup(true)
-
-	elif GameData.became_master:
-
-		setup(true)
+	get_tree().paused = false
 
 	restart_button.pressed.connect(restart_game)
 	main_menu_button.pressed.connect(go_to_main_menu)
 	quit_button.pressed.connect(quit_game)
 
 func restart_game():
-
-	get_tree().paused = false
 
 	GameData.player_team.clear()
 	GameData.enemy_team.clear()
@@ -65,17 +26,17 @@ func restart_game():
 
 	GameData.demo_finished = false
 	GameData.became_master = false
-	GameData.result_victory = false
 
 	get_tree().change_scene_to_file(
 		"res://Scenes/StarterSelection.tscn"
 	)
 
 func go_to_main_menu():
-	get_tree().paused = false
+
 	get_tree().change_scene_to_file(
 		"res://Scenes/MainMenu.tscn"
 	)
 
 func quit_game():
+
 	get_tree().quit()

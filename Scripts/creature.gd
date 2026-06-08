@@ -20,13 +20,18 @@ var attacks = []
 var attack_cooldowns = {}
 var is_animating_attack = false
 
+var default_scale = Vector2.ONE
+
 signal died
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+
+	default_scale = scale
+
 	if is_enemy:
 		$Sprite2D.flip_h = true
-		
+
 	load_creature_data()
 	hp = max_hp
 
@@ -57,7 +62,8 @@ func receive_damage(amount):
 	
 func attack(target: Creature, attack_data) -> bool:
 	
-	play_attack_animation()
+	if is_animating_attack:
+		return false
 	
 	if attack_cooldowns[attack_data.name] > 0:
 		print("Ataque em cooldown!")
@@ -92,6 +98,8 @@ func attack(target: Creature, attack_data) -> bool:
 		)
 
 		return false
+	
+	await play_attack_animation()
 	
 	var final_damage = calculate_damage(
 		target,
@@ -130,32 +138,32 @@ func calculate_damage(target: Creature, base_damage, attack_type):
 func get_type_multiplier(target, attack_type):
 
 	if attack_type == "fogo" and target.creature_type == "planta":
-		return 1.5
+		return 1.2
 		
 	elif attack_type == "planta" and target.creature_type == "água":
-		return 1.5
+		return 1.2
 		
 	elif attack_type == "água" and target.creature_type == "fogo":
-		return 1.5
+		return 1.2
 		
 	elif attack_type == target.creature_type:
 		return 1.0
 		
 	else:
-		return 0.5
+		return 0.8
 		
 # Chama um func de efeito pra aplicar
 func apply_effect(effect_name, _attacker):
 	
 	match effect_name:
 		
-		"queimar":
+		"burn":
 			apply_burn()
 			
-		"congelar":
+		"freeze":
 			apply_freeze()
 			
-		"paralizar":
+		"paralyze":
 			apply_paralyze()
 
 # Aplica paralisia (fogo)
@@ -241,6 +249,7 @@ func load_creature_data():
 	hp = max_hp
 	
 	attacks.clear()
+	
 
 	for attack_id in data.attacks:
 		attacks.append(
@@ -249,6 +258,9 @@ func load_creature_data():
 		
 		sprite.texture = load(data.sprite)
 		
+		
+	attack_cooldowns.clear()
+	
 	for attack_data in attacks:
 		attack_cooldowns[attack_data.name] = 0.0
 	
@@ -351,6 +363,29 @@ func play_death_animation():
 		self,
 		"modulate:a",
 		0.0,
+		0.5
+	)
+
+	await tween.finished
+	
+func play_summon_animation():
+
+	scale = Vector2.ZERO
+	modulate.a = 0
+
+	var tween = create_tween()
+
+	tween.parallel().tween_property(
+		self,
+		"scale",
+		default_scale,
+		0.5
+	)
+
+	tween.parallel().tween_property(
+		self,
+		"modulate:a",
+		1.0,
 		0.5
 	)
 

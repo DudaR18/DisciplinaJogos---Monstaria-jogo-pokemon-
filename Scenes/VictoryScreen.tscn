@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://1ci6xlvuo21w"]
+
+[ext_resource type="FontFile" uid="uid://cyjyefsgciqle" path="res://Assets/Fonts/BetterVCR 25.09.ttf" id="1_1mj8m"]
+[ext_resource type="Script" uid="uid://d363maxkkgx14" path="res://Scripts/victory_screen.gd" id="1_j7jqh"]
+[ext_resource type="Texture2D" uid="uid://dsphjkn4dtpsc" path="res://Assets/Sprites/base-aquary.png" id="2_j7jqh"]
+[ext_resource type="Texture2D" uid="uid://b7f7spuep1lt3" path="res://Assets/Sprites/base-flameling.png" id="3_fjces"]
+[ext_resource type="Texture2D" uid="uid://qimaq1cpn2ds" path="res://Assets/Sprites/base-leafbat.png" id="4_fv7sy"]
+
+[node name="VictoryScreen" type="Control" unique_id=559523608]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_j7jqh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=220817693]
+visible = false
+layout_mode = 0
+offset_right = 1281.0
+offset_bottom = 712.0
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=186414267]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 195.0
+offset_right = 1231.0
+offset_bottom = 510.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=167883793]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1194495753]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1mj8m")
+theme_override_font_sizes/font_size = 30
+text = "PARABÉNS!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="CenterContainer/VBoxContainer" unique_id=927845676]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1mj8m")
+theme_override_font_sizes/font_size = 20
+text = "Você concluiu todas as batalhas implementadas até o momento.
+
+A jornada para se tornar o Mestre das Criaturas ainda está em desenvolvimento!
+
+Obrigado por jogar Monstaria.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1086166444]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1mj8m")
+text = "Jogar Novamente"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2076092515]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1mj8m")
+text = "Menu Inicial"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=296024145]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1mj8m")
+text = "Sair do Jogo"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=870300054]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 585.0
+offset_right = 383.0
+offset_bottom = 714.0
+texture = ExtResource("2_j7jqh")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=904742663]
+layout_mode = 0
+offset_left = 556.0
+offset_top = 557.0
+offset_right = 730.0
+offset_bottom = 711.0
+texture = ExtResource("3_fjces")
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=46848871]
+layout_mode = 0
+offset_left = 886.0
+offset_top = 568.0
+offset_right = 1057.0
+offset_bottom = 711.0
+texture = ExtResource("4_fv7sy")
+stretch_mode = 5

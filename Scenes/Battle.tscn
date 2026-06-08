@@ -32,6 +32,7 @@ texture = ExtResource("4_1samx")
 [node name="PlayerCreature" parent="." unique_id=1290351828 instance=ExtResource("1_wvl2i")]
 position = Vector2(340, 400)
 scale = Vector2(0.8, 0.8)
+creature_id = "aquary"
 
 [node name="Sprite2D2" type="Sprite2D" parent="PlayerCreature" unique_id=558464749]
 scale = Vector2(0.2, 0.2)
@@ -43,7 +44,7 @@ shape = SubResource("RectangleShape2D_2h7oj")
 position = Vector2(970, 240)
 scale = Vector2(0.9, 0.9)
 is_enemy = true
-creature_id = "aquary"
+creature_id = ""
 
 [node name="Sprite2D2" type="Sprite2D" parent="EnemyCreature" unique_id=598386548]
 scale = Vector2(0.2, 0.2)
