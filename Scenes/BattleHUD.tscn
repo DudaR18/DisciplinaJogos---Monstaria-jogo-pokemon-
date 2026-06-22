@@ -304,6 +304,17 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_17j1w")
 text = "1- Trocar 
 criatura"
 
+[node name="SwitchCooldown" type="TextureProgressBar" parent="BottomPanel/MainBottomLayout/ActionButtons/SwitchButton" unique_id=201568431]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 36.0
+offset_right = 111.0
+offset_bottom = 76.0
+max_value = 360.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("4_u6200")
+
 [node name="RunButton" type="Button" parent="BottomPanel/MainBottomLayout/ActionButtons" unique_id=1872945582]
 custom_minimum_size = Vector2(180, 55)
 layout_mode = 2

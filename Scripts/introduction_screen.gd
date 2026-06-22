@@ -10,8 +10,7 @@ var dialogues = [
 	"Em uma batalha, duas criaturas utilizam ataques e habilidades para derrotar o adversário.",
 	"Se deseja se tornar um Mestre das Criaturas, deverá vencer várias batalhas seguidas.",
 	"Após cada vitória, você poderá recrutar uma criatura derrotada para sua equipe.",
-	"Agora chegou a hora de escolher seu primeiro companheiro de aventura!",
-	"Faça uma sábia escolha..."
+	"Agora chegou a hora de escolher seu primeiro companheiro de aventura! Faça uma sábia escolha..."
 ]
 
 func _ready():
@@ -30,3 +29,8 @@ func _on_next_pressed() -> void:
 		return
 
 	dialogue_label.text = dialogues[current_text]
+
+func _process(_delta):
+
+	if Input.is_action_just_pressed("ui_accept"):
+		_on_next_pressed()

@@ -26,7 +26,7 @@ const ATTACKS = {
 	
 	"fireball": {
 		"name": "Bola de Fogo",
-		"damage": 16,
+		"damage": 160,
 		"cooldown": 6.0,
 		"type": "fogo",
 		"effect": "none"
@@ -66,8 +66,8 @@ const ATTACKS = {
 	
 	"leaf_cut": {
 		"name": "Folha Cortante",
-		"damage": 802,
-		"cooldown": 0.0,
+		"damage": 12,
+		"cooldown": 6.0,
 		"type": "planta",
 		"effect": "none"
 	},

@@ -19,12 +19,12 @@ var burn_active = false
 var attacks = []
 var attack_cooldowns = {}
 var is_animating_attack = false
+var last_combo_text = ""
 
 var default_scale = Vector2.ONE
 
 signal died
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
 	default_scale = scale
@@ -35,7 +35,7 @@ func _ready() -> void:
 	load_creature_data()
 	hp = max_hp
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
 	for attack_name in attack_cooldowns.keys():
 		if attack_cooldowns[attack_name] > 0:
@@ -107,6 +107,32 @@ func attack(target: Creature, attack_data) -> bool:
 		attack_data.type
 	)
 	
+	match attack_data.name:
+
+		"Arranhar":
+			target.show_attack_effect("slash")
+
+		"Mordida":
+			target.show_attack_effect("hit_fogo")
+
+		"Bola de Fogo":
+			target.show_attack_effect("bola_fogo")
+
+		"Bafo de Dragão":
+			target.show_attack_effect("bafo_dragao")
+
+		"Jato de Água":
+			target.show_attack_effect("jato_agua")
+
+		"Chuva Congelada":
+			target.show_attack_effect("chuva_congelante")
+
+		"Folha Cortante":
+			target.show_attack_effect("folha_cortante")
+
+		"Raízes Paralisantes":
+			target.show_attack_effect("raiz_paralizante")
+		
 	target.receive_damage(final_damage)
 	
 	target.apply_effect(attack_data.effect, self)
@@ -126,14 +152,43 @@ func attack(target: Creature, attack_data) -> bool:
 	
 	return true
 	
+
 func calculate_damage(target: Creature, base_damage, attack_type):
+
+	last_combo_text = ""
 
 	var multiplier = get_type_multiplier(
 		target,
 		attack_type
 	)
 
-	return int(base_damage * multiplier)
+	var final_damage = int(base_damage * multiplier)
+
+	if target.burn_active and attack_type == "planta":
+		final_damage = int(final_damage * 1.5)
+		last_combo_text = "COMBO! Ataque de planta causou dano extra em alvo queimado!"
+		target.show_floating_text(
+			"COMBO!",
+			Color.GREEN_YELLOW
+		)
+		
+	if target.is_paralyzed and attack_type == "normal":
+		final_damage = int(final_damage * 1.3)
+		last_combo_text = "COMBO! Ataque normal causou dano extra em alvo paralisado!"
+		target.show_floating_text(
+			"COMBO!",
+			Color.GREEN_YELLOW
+		)
+		
+	if target.frozen_attack != "" and attack_type == "fogo":
+		final_damage = int(final_damage * 1.5)
+		last_combo_text = "COMBO! Ataque de fogo causou dano extra em alvo congelado!"
+		target.show_floating_text(
+			"COMBO!",
+			Color.GREEN_YELLOW
+		)
+		
+	return final_damage
 	
 func get_type_multiplier(target, attack_type):
 
@@ -147,10 +202,10 @@ func get_type_multiplier(target, attack_type):
 		return 1.2
 		
 	elif attack_type == target.creature_type:
-		return 1.0
+		return 0.8
 		
 	else:
-		return 0.8
+		return 1.0
 		
 # Chama um func de efeito pra aplicar
 func apply_effect(effect_name, _attacker):
@@ -173,8 +228,12 @@ func apply_burn():
 		return
 		
 	burn_active = true
+	show_floating_text(
+		"QUEIMADO!",
+		Color.ORANGE
+	)
 	
-	for i in range(5):
+	for i in range(8):
 		
 		await get_tree().create_timer(1.0).timeout
 		
@@ -206,6 +265,10 @@ func apply_freeze():
 	var selected_attack = available_attacks.pick_random()
 
 	frozen_attack = selected_attack.name
+	show_floating_text(
+		"CONGELADO!",
+		Color.CYAN
+	)
 
 	print(
 		creature_name +
@@ -229,6 +292,10 @@ func apply_paralyze():
 	await get_tree().create_timer(2.5).timeout
 	
 	is_paralyzed = false
+	show_floating_text(
+		"PARALISADO!",
+		Color.YELLOW
+	)
 
 # ========= Carregar creatures prontas ============
 func load_creature_data():
@@ -270,10 +337,36 @@ func show_damage_text(amount):
 	
 	get_parent().add_child(damage_text)
 	
-	damage_text.global_position = global_position
-	
+	damage_text.global_position = (
+		global_position +
+		Vector2(0, -10)
+	)
 	damage_text.show_damage(amount)
 
+func show_floating_text(
+	message,
+	color = Color.WHITE
+):
+
+	var damage_scene = preload(
+		"res://Scenes/DamageText.tscn"
+	)
+
+	var damage_text = damage_scene.instantiate()
+
+	get_parent().add_child(
+		damage_text
+	)
+
+	damage_text.global_position = (
+		Vector2(0, -40)
+		)
+
+	damage_text.show_text(
+		message,
+		color
+	)
+	
 func play_attack_animation():
 
 	if is_animating_attack:
@@ -390,3 +483,40 @@ func play_summon_animation():
 	)
 
 	await tween.finished
+
+func play_return_animation():
+
+	var tween = create_tween()
+
+	tween.parallel().tween_property(
+		self,
+		"scale",
+		Vector2.ZERO,
+		0.4
+	)
+
+	tween.parallel().tween_property(
+		self,
+		"modulate:a",
+		0.0,
+		0.4
+	)
+
+	await tween.finished
+	
+func show_attack_effect(animation_name):
+
+	var scene = preload(
+		"res://Scenes/AttackEffect.tscn"
+	)
+
+	var effect = scene.instantiate()
+
+	get_parent().add_child(effect)
+
+	effect.global_position = (
+		global_position +
+		Vector2(0, -20)
+	)
+
+	effect.play(animation_name)

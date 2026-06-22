@@ -17,6 +17,7 @@ signal run_pressed
 @onready var attack3_text = $BottomPanel/MainBottomLayout/AttackPanel/AttackGrid/Attack3/AttackText
 
 @onready var switch_button = $BottomPanel/MainBottomLayout/ActionButtons/SwitchButton
+@onready var switch_cooldown = $BottomPanel/MainBottomLayout/ActionButtons/SwitchButton/SwitchCooldown
 @onready var run_button = $BottomPanel/MainBottomLayout/ActionButtons/RunButton
 
 @onready var player_hp_bar = $BottomPanel/MainBottomLayout/PlayerInfo/VBoxContainer/PlayerHPBar
@@ -143,7 +144,10 @@ func _ready():
 	run_button.pressed.connect(func():
 		run_pressed.emit()
 	)
-
+	
+func add_log(text):
+	combat_log.text += text + "\n"
+	
 func update_battle_info(player, enemy):
 
 	player_hp_bar.max_value = player.max_hp
@@ -242,8 +246,6 @@ func update_battle_info(player, enemy):
 	#enemy_sprite.scale.x = -1
 	#enemy_sprite.scale = Vector2(-1, 1)
 	
-func add_log(text):
-	combat_log.text += text + "\n"
 
 func update_cooldown_visual():
 
@@ -286,3 +288,15 @@ func update_cooldown_visual():
 			(cd / current_attacks[2].cooldown) * 360
 		)
 		cooldown3.visible = true
+
+func update_switch_cooldown(current_cd, max_cd):
+
+	if max_cd <= 0:
+		switch_cooldown.value = 0
+		return
+
+	if current_cd <= 0:
+		switch_cooldown.value = 0
+		return
+
+	switch_cooldown.value = 360 - ((current_cd / max_cd) * 360)

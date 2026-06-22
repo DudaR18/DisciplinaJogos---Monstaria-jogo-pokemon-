@@ -54,10 +54,17 @@ layout_mode = 2
 text = "Troca de Creature"
 horizontal_alignment = 1
 
-[node name="Text" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=1172852627]
+[node name="CreatureButton1" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1683893218]
 layout_mode = 2
-text = "Ainda não implementado :)"
-horizontal_alignment = 1
+text = "Criatura 1"
+
+[node name="CreatureButton2" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=313818077]
+layout_mode = 2
+text = "Criatura 2"
+
+[node name="CreatureButton3" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1268740579]
+layout_mode = 2
+text = "Criatura 3"
 
 [node name="CloseButton" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=479677945]
 process_mode = 2

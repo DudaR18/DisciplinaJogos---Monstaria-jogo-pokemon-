@@ -29,3 +29,8 @@ func _on_next_pressed():
 		return
 
 	dialogue_label.text = dialogues[current_text]
+
+func _process(_delta):
+
+	if Input.is_action_just_pressed("ui_accept"):
+		_on_next_pressed()

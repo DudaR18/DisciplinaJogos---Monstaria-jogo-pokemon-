@@ -87,13 +87,9 @@ func start_next_dialogue():
 
 		GameData.current_enemy_dialogue = [
 
-			"Interessante...",
+			"Interessante... Você venceu aquele novato.",
 
-			"Você venceu aquele novato.",
-
-			"Mas eu sou muito mais forte!",
-
-			"Vamos descobrir quem merece ser Mestre!"
+			"Mas eu sou muito mais forte! Vamos descobrir quem merece ser Mestre!"
 		]
 
 	get_tree().change_scene_to_file(

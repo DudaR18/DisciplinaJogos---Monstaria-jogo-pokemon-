@@ -44,9 +44,7 @@ func start_battle():
 
 	GameData.current_enemy_dialogue = [
 
-		"Então você escolheu sua primeira criatura?",
-
-		"Vamos ver se ela é forte mesmo!",
+		"Então você escolheu sua primeira criatura? Vamos ver se ela é forte mesmo!",
 
 		"Prepare-se para batalhar!"
 	]

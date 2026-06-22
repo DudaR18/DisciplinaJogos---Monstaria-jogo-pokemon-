@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dpkuds4eef3dp"]
+
+[ext_resource type="Script" uid="uid://xlphk6sutcoa" path="res://Scripts/run_confirm.gd" id="1_6ulwm"]
+[ext_resource type="FontFile" uid="uid://cyjyefsgciqle" path="res://Assets/Fonts/BetterVCR 25.09.ttf" id="1_a6ovd"]
+
+[node name="Control" type="Control" unique_id=1890503728]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6ulwm")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=339833520]
+layout_mode = 1
+offset_left = 370.0
+offset_top = 270.0
+offset_right = 911.0
+offset_bottom = 425.0
+color = Color(0, 0, 0, 0.33333334)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=845337638]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 300.0
+offset_right = 440.0
+offset_bottom = 340.0
+use_top_left = true
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1136805617]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel" unique_id=719117713]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Message" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=1638049169]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_a6ovd")
+text = "Tem certeza que deseja fugir da batalha?"
+horizontal_alignment = 1
+
+[node name="YesButton" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1136921345]
+process_mode = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_a6ovd")
+text = "Sim"
+
+[node name="NoButton" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=240237862]
+process_mode = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_a6ovd")
+text = "Não"
