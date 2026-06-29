@@ -198,12 +198,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_2w8vd")
 [node name="Cooldown1" type="TextureProgressBar" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid/Attack1" unique_id=821763182]
 modulate = Color(1, 1, 1, 0.39215687)
 layout_mode = 1
-offset_left = 1.0
-offset_right = 78.0
+offset_right = 77.0
 offset_bottom = 75.0
-max_value = 10.0
-value = 10.0
-fill_mode = 4
+max_value = 360.0
+fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("4_u6200")
 
@@ -232,12 +230,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_2w8vd")
 [node name="Cooldown2" type="TextureProgressBar" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid/Attack2" unique_id=1171113268]
 modulate = Color(1, 1, 1, 0.39215687)
 layout_mode = 0
-offset_left = -1.0
-offset_right = 76.0
+offset_right = 77.0
 offset_bottom = 75.0
-max_value = 10.0
-value = 2.0
-fill_mode = 4
+max_value = 360.0
+fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("4_u6200")
 
@@ -268,9 +264,8 @@ modulate = Color(1, 1, 1, 0.39215687)
 layout_mode = 0
 offset_right = 77.0
 offset_bottom = 75.0
-max_value = 10.0
-value = 10.0
-fill_mode = 4
+max_value = 360.0
+fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("4_u6200")
 

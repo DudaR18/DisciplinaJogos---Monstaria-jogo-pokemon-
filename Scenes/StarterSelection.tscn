@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://eol31s6jffob" path="res://Scripts/Starter_Selection.gd" id="1_k4x0a"]
 [ext_resource type="FontFile" uid="uid://cyjyefsgciqle" path="res://Assets/Fonts/BetterVCR 25.09.ttf" id="2_vhgfs"]
 [ext_resource type="Texture2D" uid="uid://dsphjkn4dtpsc" path="res://Assets/Sprites/base-aquary.png" id="3_5x677"]
-[ext_resource type="Texture2D" uid="uid://b7f7spuep1lt3" path="res://Assets/Sprites/base-flameling.png" id="4_mn1f4"]
+[ext_resource type="Texture2D" uid="uid://bg0yvwe2m1f30" path="res://Assets/Sprites/Flame.png" id="4_5x677"]
 [ext_resource type="Texture2D" uid="uid://qimaq1cpn2ds" path="res://Assets/Sprites/base-leafbat.png" id="5_iqf8w"]
 
 [node name="StarterSelection" type="Control" unique_id=957314038]
@@ -35,9 +35,9 @@ Aquary"
 [node name="AquarySprite" type="TextureRect" parent="." unique_id=126577457]
 layout_mode = 0
 offset_left = 230.0
-offset_top = 306.0
+offset_top = 278.0
 offset_right = 423.0
-offset_bottom = 483.0
+offset_bottom = 455.0
 texture = ExtResource("3_5x677")
 
 [node name="FlamelingButton" type="Button" parent="." unique_id=2092318727]
@@ -51,11 +51,12 @@ Flameling"
 
 [node name="FlamelingSprite" type="TextureRect" parent="." unique_id=1495172415]
 layout_mode = 0
-offset_left = 492.0
-offset_top = 282.0
-offset_right = 727.0
-offset_bottom = 491.0
-texture = ExtResource("4_mn1f4")
+offset_left = 433.0
+offset_top = 216.0
+offset_right = 849.0
+offset_bottom = 493.0
+texture = ExtResource("4_5x677")
+stretch_mode = 6
 
 [node name="LeafbatButton" type="Button" parent="." unique_id=1231256584]
 layout_mode = 0
@@ -68,10 +69,10 @@ Leafbat"
 
 [node name="LeafbatSprite" type="TextureRect" parent="." unique_id=1291221280]
 layout_mode = 0
-offset_left = 800.0
-offset_top = 289.0
-offset_right = 1047.0
-offset_bottom = 494.0
+offset_left = 802.0
+offset_top = 255.0
+offset_right = 1049.0
+offset_bottom = 460.0
 texture = ExtResource("5_iqf8w")
 
 [connection signal="pressed" from="AquaryButton" to="." method="_on_aquary_button_pressed"]

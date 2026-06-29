@@ -3,8 +3,8 @@
 [ext_resource type="FontFile" uid="uid://cyjyefsgciqle" path="res://Assets/Fonts/BetterVCR 25.09.ttf" id="1_1mj8m"]
 [ext_resource type="Script" uid="uid://d363maxkkgx14" path="res://Scripts/victory_screen.gd" id="1_j7jqh"]
 [ext_resource type="Texture2D" uid="uid://dsphjkn4dtpsc" path="res://Assets/Sprites/base-aquary.png" id="2_j7jqh"]
-[ext_resource type="Texture2D" uid="uid://b7f7spuep1lt3" path="res://Assets/Sprites/base-flameling.png" id="3_fjces"]
 [ext_resource type="Texture2D" uid="uid://qimaq1cpn2ds" path="res://Assets/Sprites/base-leafbat.png" id="4_fv7sy"]
+[ext_resource type="Texture2D" uid="uid://bg0yvwe2m1f30" path="res://Assets/Sprites/Flame.png" id="4_j7jqh"]
 
 [node name="VictoryScreen" type="Control" unique_id=559523608]
 layout_mode = 3
@@ -73,11 +73,11 @@ texture = ExtResource("2_j7jqh")
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=904742663]
 layout_mode = 0
-offset_left = 556.0
-offset_top = 557.0
-offset_right = 730.0
-offset_bottom = 711.0
-texture = ExtResource("3_fjces")
+offset_left = 508.0
+offset_top = 502.0
+offset_right = 793.0
+offset_bottom = 794.0
+texture = ExtResource("4_j7jqh")
 stretch_mode = 5
 
 [node name="TextureRect3" type="TextureRect" parent="." unique_id=46848871]
