@@ -249,46 +249,50 @@ func update_battle_info(player, enemy):
 
 func update_cooldown_visual():
 
-	if current_attacks.size() > 0:
+	update_single_cooldown(
+		cooldown1,
+		0
+	)
 
-		var cd = player_ref.attack_cooldowns[
-			current_attacks[0].name
-		]
+	update_single_cooldown(
+		cooldown2,
+		1
+	)
 
-		cooldown1.max_value = 360
+	update_single_cooldown(
+		cooldown3,
+		2
+	)
 
-		cooldown1.value = 360 - (
-			(cd / current_attacks[0].cooldown) * 360
-		)
+func update_single_cooldown(cooldown_node, attack_index):
 
-		cooldown1.visible = true
+	if current_attacks.size() <= attack_index:
+		cooldown_node.visible = false
+		return
 
+	var attack_data = current_attacks[attack_index]
 
-	if current_attacks.size() > 1:
-		var cd = player_ref.attack_cooldowns[
-			current_attacks[1].name
-		]
+	var cd = player_ref.attack_cooldowns[
+		attack_data.name
+	]
 
-		cooldown2.max_value = 360
-		cooldown2.value = 360 - (
-			(cd / current_attacks[1].cooldown) * 360
-		)
-		
-		cooldown2.visible = true
+	if cd <= 0:
+		cooldown_node.value = 0
+		cooldown_node.visible = false
+		return
 
+	cooldown_node.visible = true
+	cooldown_node.max_value = 360
 
-	if current_attacks.size() > 2:
+	var max_cd = player_ref.global_attack_cooldown_max
 
-		var cd = player_ref.attack_cooldowns[
-			current_attacks[2].name
-		]
+	if max_cd <= 0:
+		max_cd = attack_data.cooldown
 
-		cooldown3.max_value = 360
-		cooldown3.value = 360 - (
-			(cd / current_attacks[2].cooldown) * 360
-		)
-		cooldown3.visible = true
-
+	cooldown_node.value = 360 - (
+		(cd / max_cd) * 360
+	)
+	
 func update_switch_cooldown(current_cd, max_cd):
 
 	if max_cd <= 0:

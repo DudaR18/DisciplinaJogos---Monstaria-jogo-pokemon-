@@ -18,6 +18,7 @@ var burn_active = false
 
 var attacks = []
 var attack_cooldowns = {}
+var global_attack_cooldown_max = 0.0
 var is_animating_attack = false
 var last_combo_text = ""
 
@@ -148,7 +149,9 @@ func attack(target: Creature, attack_data) -> bool:
 		
 	print(creature_name, " usou ", attack_data.name)
 	
-	attack_cooldowns[attack_data.name] = attack_data.cooldown
+	for attack_name in attack_cooldowns.keys():
+
+		attack_cooldowns[attack_name] = attack_data.cooldown
 	
 	return true
 	
@@ -171,6 +174,7 @@ func calculate_damage(target: Creature, base_damage, attack_type):
 			"COMBO!",
 			Color.GREEN_YELLOW
 		)
+		target.show_attack_effect("hit_fogo")
 		
 	if target.is_paralyzed and attack_type == "normal":
 		final_damage = int(final_damage * 1.3)
@@ -179,6 +183,7 @@ func calculate_damage(target: Creature, base_damage, attack_type):
 			"COMBO!",
 			Color.GREEN_YELLOW
 		)
+		target.show_attack_effect("hit_fogo")
 		
 	if target.frozen_attack != "" and attack_type == "fogo":
 		final_damage = int(final_damage * 1.5)
@@ -187,6 +192,7 @@ func calculate_damage(target: Creature, base_damage, attack_type):
 			"COMBO!",
 			Color.GREEN_YELLOW
 		)
+		target.show_attack_effect("hit_fogo")
 		
 	return final_damage
 	
@@ -359,7 +365,7 @@ func show_floating_text(
 	)
 
 	damage_text.global_position = (
-		Vector2(0, -40)
+		Vector2(0, -60)
 		)
 
 	damage_text.show_text(
