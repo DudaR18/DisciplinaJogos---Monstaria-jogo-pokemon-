@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://c4lyn1kti7xc"]
 
 [ext_resource type="Script" uid="uid://b1sauie7jtmr0" path="res://Scripts/battle_hud.gd" id="1_hvom7"]
-[ext_resource type="Texture2D" uid="uid://ishylxh006rc" path="res://Assets/Sprites/base-batalha.png" id="2_vag6d"]
-[ext_resource type="Texture2D" uid="uid://bifs50668ffi8" path="res://Assets/Sprites/base-texto.png" id="3_u6200"]
-[ext_resource type="Texture2D" uid="uid://8oeuhadrbj86" path="res://Assets/Sprites/base-vida.png" id="4_aweg5"]
-[ext_resource type="Texture2D" uid="uid://bq1pisklgiu5r" path="res://Assets/Sprites/base-healthbar_background.png" id="4_k8ulr"]
-[ext_resource type="Texture2D" uid="uid://8ed814juaeuf" path="res://Assets/Sprites/base-cooldown.png" id="4_u6200"]
-[ext_resource type="Texture2D" uid="uid://mcuq8itm2xmu" path="res://Assets/Sprites/base-healthbar_fill.png" id="5_18se0"]
+[ext_resource type="Texture2D" uid="uid://bifs50668ffi8" path="res://Sprites/base-texto.png" id="3_u6200"]
+[ext_resource type="Texture2D" uid="uid://bq1pisklgiu5r" path="res://Sprites/base-healthbar_background.png" id="4_k8ulr"]
+[ext_resource type="Texture2D" uid="uid://8ed814juaeuf" path="res://Sprites/base-cooldown.png" id="4_u6200"]
+[ext_resource type="Texture2D" uid="uid://mcuq8itm2xmu" path="res://Sprites/base-healthbar_fill.png" id="5_18se0"]
 [ext_resource type="FontFile" uid="uid://cyjyefsgciqle" path="res://Assets/Fonts/BetterVCR 25.09.ttf" id="5_aweg5"]
+[ext_resource type="Texture2D" uid="uid://bx5can87e100p" path="res://Assets/UI/Sprites/UI_TravelBook_Popup01a.png" id="8_k8ulr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxbm0"]
 bg_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
@@ -86,13 +85,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_bxbm0")
 [node name="BattleFrame" type="TextureRect" parent="BottomPanel" unique_id=1089228403]
 layout_mode = 1
 anchors_preset = -1
-offset_left = -7.0
-offset_top = -183.0
-offset_right = 1287.0
-offset_bottom = 511.0
+offset_left = 4.0
+offset_top = -1.0
+offset_right = 1275.0
+offset_bottom = 237.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_vag6d")
+texture = ExtResource("8_k8ulr")
 expand_mode = 1
 
 [node name="MainBottomLayout" type="HBoxContainer" parent="BottomPanel" unique_id=1976933112]
@@ -179,10 +178,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_vag6d")
 
 [node name="AttackGrid" type="GridContainer" parent="BottomPanel/MainBottomLayout/AttackPanel" unique_id=361270948]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 19.0
-offset_right = 409.0
-offset_bottom = 213.0
+offset_left = -5.0
+offset_top = 6.0
+offset_right = 427.0
+offset_bottom = 204.0
 columns = 2
 
 [node name="Attack1" type="Button" parent="BottomPanel/MainBottomLayout/AttackPanel/AttackGrid" unique_id=174324733]
@@ -330,9 +329,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -313.0
+offset_left = -285.0
 offset_top = -708.0
-offset_right = -13.0
+offset_right = 25.0
 offset_bottom = -588.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vag6d")
@@ -341,18 +340,18 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_vag6d")
 custom_minimum_size = Vector2(350, 140)
 layout_mode = 0
 offset_left = -150.0
-offset_top = -130.0
-offset_right = 335.0
-offset_bottom = 382.0
-texture = ExtResource("4_aweg5")
+offset_top = -3.0
+offset_right = 267.0
+offset_bottom = 137.0
+texture = ExtResource("8_k8ulr")
 expand_mode = 1
 
 [node name="EnemyLayout" type="VBoxContainer" parent="EnemyInfo" unique_id=1334024045]
 custom_minimum_size = Vector2(300, 120)
 layout_mode = 0
-offset_left = -112.0
-offset_top = 5.0
-offset_right = 284.0
+offset_left = -131.0
+offset_top = 7.0
+offset_right = 251.0
 offset_bottom = 138.0
 
 [node name="EnemySprite" type="TextureRect" parent="EnemyInfo/EnemyLayout" unique_id=226958558]
@@ -401,3 +400,5 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 0.74509805)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("5_aweg5")
 horizontal_alignment = 1
+
+[connection signal="pressed" from="BottomPanel/MainBottomLayout/ActionButtons/SwitchButton" to="." method="_on_switch_button_pressed"]

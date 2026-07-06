@@ -2,8 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://cyjyefsgciqle" path="res://Assets/Fonts/BetterVCR 25.09.ttf" id="1_1mj8m"]
 [ext_resource type="Script" uid="uid://d363maxkkgx14" path="res://Scripts/victory_screen.gd" id="1_j7jqh"]
-[ext_resource type="Texture2D" uid="uid://dsphjkn4dtpsc" path="res://Assets/Sprites/base-aquary.png" id="2_j7jqh"]
-[ext_resource type="Texture2D" uid="uid://qimaq1cpn2ds" path="res://Assets/Sprites/base-leafbat.png" id="4_fv7sy"]
+[ext_resource type="Texture2D" uid="uid://dsphjkn4dtpsc" path="res://Sprites/base-aquary.png" id="2_j7jqh"]
+[ext_resource type="Texture2D" uid="uid://qimaq1cpn2ds" path="res://Sprites/base-leafbat.png" id="4_fv7sy"]
 [ext_resource type="Texture2D" uid="uid://bg0yvwe2m1f30" path="res://Assets/Sprites/Flame.png" id="4_j7jqh"]
 
 [node name="VictoryScreen" type="Control" unique_id=559523608]

@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://c6a17wqgnyhf0"]
 
 [ext_resource type="Script" uid="uid://bhkme13w364fx" path="res://Scripts/main_menu.gd" id="1_tt5f1"]
-[ext_resource type="Texture2D" uid="uid://c6wajo8x8m7ny" path="res://Assets/Sprites/base-fundo-teste.png" id="2_8saeu"]
-[ext_resource type="Texture2D" uid="uid://bdfsvlcvwtn7u" path="res://Assets/Sprites/base-titulo.png" id="2_853f1"]
+[ext_resource type="Texture2D" uid="uid://c6wajo8x8m7ny" path="res://Sprites/base-fundo-teste.png" id="2_8saeu"]
+[ext_resource type="Texture2D" uid="uid://bdfsvlcvwtn7u" path="res://Sprites/base-titulo.png" id="2_853f1"]
 [ext_resource type="FontFile" uid="uid://b0mrkdo55qxys" path="res://Assets/Fonts/GrapeSoda.ttf" id="4_ghw46"]
-[ext_resource type="Texture2D" uid="uid://bifs50668ffi8" path="res://Assets/Sprites/base-texto.png" id="5_df05h"]
+[ext_resource type="Texture2D" uid="uid://vosyydjm6sx0" path="res://Assets/UI/Sprites/UI_TravelBook_Frame01a.png" id="5_8um5k"]
+[ext_resource type="Texture2D" uid="uid://bifs50668ffi8" path="res://Sprites/base-texto.png" id="5_df05h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_df05h"]
 bg_color = Color(0, 0, 0, 0.74509805)
@@ -89,6 +90,39 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/pressed = SubResource("StyleBoxFlat_df05h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8um5k")
 text = "Jogar"
+icon = ExtResource("5_8um5k")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="DicasButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1543718805]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.1000228, 0.14706811, 0.2570162, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_ghw46")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/pressed = SubResource("StyleBoxFlat_df05h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8um5k")
+text = "Dicas"
+icon = ExtResource("5_8um5k")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="CheatButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1922119953]
+visible = false
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.1000228, 0.14706811, 0.2570162, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_ghw46")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/pressed = SubResource("StyleBoxFlat_df05h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8um5k")
+text = "Cheats"
 icon = ExtResource("5_df05h")
 flat = true
 icon_alignment = 1
@@ -105,7 +139,9 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/pressed = SubResource("StyleBoxFlat_df05h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8um5k")
 text = "Sair"
-icon = ExtResource("5_df05h")
+icon = ExtResource("5_8um5k")
 flat = true
 icon_alignment = 1
 expand_icon = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/DicasButton" to="." method="_on_tip_button_pressed"]

@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bg0yvwe2m1f30" path="res://Assets/Sprites/Flame.png" id="4_5x677"]
 [ext_resource type="Texture2D" uid="uid://qimaq1cpn2ds" path="res://Assets/Sprites/base-leafbat.png" id="5_iqf8w"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqf8w"]
+bg_color = Color(0.1052404, 0.10524043, 0.10524035, 1)
+
 [node name="StarterSelection" type="Control" unique_id=957314038]
 layout_mode = 3
 anchors_preset = 0
@@ -75,6 +78,133 @@ offset_right = 1049.0
 offset_bottom = 460.0
 texture = ExtResource("5_iqf8w")
 
+[node name="InfoPopup" type="Panel" parent="." unique_id=1353208193]
+visible = false
+layout_mode = 0
+offset_left = 50.0
+offset_top = 85.0
+offset_right = 1227.0
+offset_bottom = 629.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_iqf8w")
+
+[node name="PokemonSprite" type="TextureRect" parent="InfoPopup" unique_id=21063065]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 8.0
+offset_right = 479.0
+offset_bottom = 122.0
+
+[node name="PokemonName" type="Label" parent="InfoPopup" unique_id=2054942188]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 3.0
+offset_right = 688.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("2_vhgfs")
+theme_override_font_sizes/font_size = 24
+text = "nome"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PokemonType" type="Label" parent="InfoPopup" unique_id=1394255744]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 40.0
+offset_right = 685.0
+offset_bottom = 70.0
+theme_override_fonts/font = ExtResource("2_vhgfs")
+theme_override_font_sizes/font_size = 20
+text = "tipo"
+horizontal_alignment = 1
+
+[node name="PokemonHP" type="Label" parent="InfoPopup" unique_id=421391375]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 69.0
+offset_right = 677.0
+offset_bottom = 99.0
+theme_override_fonts/font = ExtResource("2_vhgfs")
+text = "vida total"
+horizontal_alignment = 1
+
+[node name="Attack1Info" type="Label" parent="InfoPopup" unique_id=320349496]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 150.0
+offset_right = 335.0
+offset_bottom = 306.0
+theme_override_fonts/font = ExtResource("2_vhgfs")
+text = "ataque
+dano
+cool
+tipo
+efeito"
+horizontal_alignment = 1
+
+[node name="Attack2Info" type="Label" parent="InfoPopup" unique_id=1753501298]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 147.0
+offset_right = 667.0
+offset_bottom = 291.0
+theme_override_fonts/font = ExtResource("2_vhgfs")
+text = "ataque
+dano
+cool
+tipo
+efeito"
+horizontal_alignment = 1
+
+[node name="Attack3Info" type="Label" parent="InfoPopup" unique_id=1459903329]
+layout_mode = 0
+offset_left = 785.0
+offset_top = 141.0
+offset_right = 976.0
+offset_bottom = 288.0
+theme_override_fonts/font = ExtResource("2_vhgfs")
+text = "ataque
+dano
+cool
+tipo
+efeito"
+horizontal_alignment = 1
+
+[node name="TipsLabel" type="Label" parent="InfoPopup" unique_id=1354889717]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 386.0
+offset_right = 1040.0
+offset_bottom = 439.0
+theme_override_fonts/font = ExtResource("2_vhgfs")
+text = "dica blalalalaalalalal"
+horizontal_alignment = 1
+
+[node name="InfoText" type="RichTextLabel" parent="InfoPopup" unique_id=1648345907]
+visible = false
+layout_mode = 0
+offset_right = 636.0
+offset_bottom = 341.0
+bbcode_enabled = true
+text = "aaa"
+
+[node name="BackButton" type="Button" parent="InfoPopup" unique_id=1866642397]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 505.0
+offset_right = 350.0
+offset_bottom = 536.0
+text = "Escolher outro"
+
+[node name="ConfirmButton" type="Button" parent="InfoPopup" unique_id=2088060426]
+layout_mode = 0
+offset_left = 749.0
+offset_top = 504.0
+offset_right = 903.0
+offset_bottom = 535.0
+text = "Confirmar escolha!"
+
 [connection signal="pressed" from="AquaryButton" to="." method="_on_aquary_button_pressed"]
 [connection signal="pressed" from="FlamelingButton" to="." method="_on_flameling_button_pressed"]
 [connection signal="pressed" from="LeafbatButton" to="." method="_on_leafbat_button_pressed"]
+[connection signal="pressed" from="InfoPopup/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="InfoPopup/ConfirmButton" to="." method="_on_confirm_button_pressed"]

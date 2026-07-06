@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bjnwroswmfsba"]
+
+[ext_resource type="Script" uid="uid://c3skg400wvl5k" path="res://Scripts/battle_tip_popup.gd" id="1_0p2fk"]
+[ext_resource type="FontFile" uid="uid://b0mrkdo55qxys" path="res://Assets/Fonts/GrapeSoda.ttf" id="2_ed7ub"]
+
+[node name="BattleTipPopup2" type="Node2D" unique_id=1180595110]
+process_mode = 2
+script = ExtResource("1_0p2fk")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1847084742]
+offset_left = 210.0
+offset_top = 79.0
+offset_right = 1081.0
+offset_bottom = 611.0
+
+[node name="Panel" type="Panel" parent="." unique_id=1397774541]
+offset_left = 216.0
+offset_top = 83.0
+offset_right = 1075.0
+offset_bottom = 605.0
+
+[node name="TipTexte" type="RichTextLabel" parent="Panel" unique_id=819920480]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 50.0
+offset_right = 823.0
+offset_bottom = 366.0
+theme_override_fonts/normal_font = ExtResource("2_ed7ub")
+theme_override_fonts/bold_font = ExtResource("2_ed7ub")
+theme_override_fonts/bold_italics_font = ExtResource("2_ed7ub")
+theme_override_fonts/italics_font = ExtResource("2_ed7ub")
+theme_override_fonts/mono_font = ExtResource("2_ed7ub")
+bbcode_enabled = true
+
+[node name="ContinueButton" type="Button" parent="Panel" unique_id=1577895866]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 457.0
+offset_right = 570.0
+offset_bottom = 513.0
+theme_override_fonts/font = ExtResource("2_ed7ub")
+theme_override_font_sizes/font_size = 22
+text = "Entendi!"

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cutu75oe6ftj5" path="res://Scripts/battle.gd" id="1_vr6xi"]
 [ext_resource type="PackedScene" uid="uid://c22w8vhrxd8gw" path="res://Scenes/Creature.tscn" id="1_wvl2i"]
-[ext_resource type="Texture2D" uid="uid://c6wajo8x8m7ny" path="res://Assets/Sprites/base-fundo-teste.png" id="2_p46lj"]
+[ext_resource type="Texture2D" uid="uid://c6wajo8x8m7ny" path="res://Sprites/base-fundo-teste.png" id="2_p46lj"]
 [ext_resource type="PackedScene" uid="uid://c4lyn1kti7xc" path="res://Scenes/BattleHUD.tscn" id="3_2h7oj"]
-[ext_resource type="Texture2D" uid="uid://biqhs28cd8q1p" path="res://Assets/Sprites/sombra.png" id="4_1samx"]
+[ext_resource type="Texture2D" uid="uid://biqhs28cd8q1p" path="res://Sprites/sombra.png" id="4_1samx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2h7oj"]
 
