@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dibqfa788bhs1"
-path="res://.godot/imported/Filler -2.PNG-ef35d0ec899857f4a3475727ec76443e.ctex"
+uid="uid://dn2dlkx427mi"
+path="res://.godot/imported/fogo2.png-e38777c9df273f9d0a80bb6e1c1d29c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Filler -2.PNG"
-dest_files=["res://.godot/imported/Filler -2.PNG-ef35d0ec899857f4a3475727ec76443e.ctex"]
+source_file="res://Assets/Sprites/fogo2.png"
+dest_files=["res://.godot/imported/fogo2.png-e38777c9df273f9d0a80bb6e1c1d29c2.ctex"]
 
 [params]
 

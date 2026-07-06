@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b245ndruj7qjk"
-path="res://.godot/imported/girl1.png-412d88d9c38d1a5fc64727b922212120.ctex"
+path="res://.godot/imported/girl1.png-4402349c376c146be61d33085ffb6f0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/girl1.png"
-dest_files=["res://.godot/imported/girl1.png-412d88d9c38d1a5fc64727b922212120.ctex"]
+source_file="res://Sprites/girl1.png"
+dest_files=["res://.godot/imported/girl1.png-4402349c376c146be61d33085ffb6f0d.ctex"]
 
 [params]
 

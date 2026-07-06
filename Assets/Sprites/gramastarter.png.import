@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dibqfa788bhs1"
-path="res://.godot/imported/Filler -2.PNG-ef35d0ec899857f4a3475727ec76443e.ctex"
+uid="uid://3kowgy5qhlw3"
+path="res://.godot/imported/gramastarter.png-f437d4d8323058e320250cc9052e787d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Filler -2.PNG"
-dest_files=["res://.godot/imported/Filler -2.PNG-ef35d0ec899857f4a3475727ec76443e.ctex"]
+source_file="res://Assets/Sprites/gramastarter.png"
+dest_files=["res://.godot/imported/gramastarter.png-f437d4d8323058e320250cc9052e787d.ctex"]
 
 [params]
 

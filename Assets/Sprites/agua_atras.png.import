@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://baatiqlatsitd"
-path="res://.godot/imported/agua_atras.png-e6d778a7a0c6363b2be3aaadf535c632.ctex"
+path="res://.godot/imported/agua_atras.png-acaf135ee9aca92b574722b5aef65329.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/agua_atras.png"
-dest_files=["res://.godot/imported/agua_atras.png-e6d778a7a0c6363b2be3aaadf535c632.ctex"]
+source_file="res://Sprites/agua_atras.png"
+dest_files=["res://.godot/imported/agua_atras.png-acaf135ee9aca92b574722b5aef65329.ctex"]
 
 [params]
 

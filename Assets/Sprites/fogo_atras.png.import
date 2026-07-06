@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmjs4q7wsng44"
-path="res://.godot/imported/fogo_atras.png-b4e5ed0de3df3bc7801e20751e726fd2.ctex"
+path="res://.godot/imported/fogo_atras.png-2d24a429352b9f13aed0d052c8a5dc97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/fogo_atras.png"
-dest_files=["res://.godot/imported/fogo_atras.png-b4e5ed0de3df3bc7801e20751e726fd2.ctex"]
+source_file="res://Sprites/fogo_atras.png"
+dest_files=["res://.godot/imported/fogo_atras.png-2d24a429352b9f13aed0d052c8a5dc97.ctex"]
 
 [params]
 

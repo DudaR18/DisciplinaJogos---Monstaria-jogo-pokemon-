@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhuyvsstq5uk7"
-path="res://.godot/imported/professora.png-146e59632787580376e065d252bded37.ctex"
+path="res://.godot/imported/professora.png-6042e25353e6daa61bbbf4b387be014c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/professora.png"
-dest_files=["res://.godot/imported/professora.png-146e59632787580376e065d252bded37.ctex"]
+source_file="res://Sprites/professora.png"
+dest_files=["res://.godot/imported/professora.png-6042e25353e6daa61bbbf4b387be014c.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://qimaq1cpn2ds"
-path="res://.godot/imported/base-leafbat.png-1626876f30da5db449e18053ef91a652.ctex"
+path="res://.godot/imported/base-leafbat.png-19665be77be7650d458d3cad7927cde4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/base-leafbat.png"
-dest_files=["res://.godot/imported/base-leafbat.png-1626876f30da5db449e18053ef91a652.ctex"]
+source_file="res://Sprites/base-leafbat.png"
+dest_files=["res://.godot/imported/base-leafbat.png-19665be77be7650d458d3cad7927cde4.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dibqfa788bhs1"
-path="res://.godot/imported/Filler -2.PNG-ef35d0ec899857f4a3475727ec76443e.ctex"
+uid="uid://cuh6rm5j2gttp"
+path="res://.godot/imported/aguastarter.png-061479dee48fa56f9069f2a9eec35d5c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Filler -2.PNG"
-dest_files=["res://.godot/imported/Filler -2.PNG-ef35d0ec899857f4a3475727ec76443e.ctex"]
+source_file="res://Assets/Sprites/aguastarter.png"
+dest_files=["res://.godot/imported/aguastarter.png-061479dee48fa56f9069f2a9eec35d5c.ctex"]
 
 [params]
 

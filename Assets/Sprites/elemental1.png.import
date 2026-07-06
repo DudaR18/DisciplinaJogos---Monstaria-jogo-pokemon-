@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dibqfa788bhs1"
-path="res://.godot/imported/Filler -2.PNG-ef35d0ec899857f4a3475727ec76443e.ctex"
+uid="uid://tw06ejqlndqc"
+path="res://.godot/imported/elemental1.png-98a2477c6c00127a9dff64becf471631.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Filler -2.PNG"
-dest_files=["res://.godot/imported/Filler -2.PNG-ef35d0ec899857f4a3475727ec76443e.ctex"]
+source_file="res://Assets/Sprites/elemental1.png"
+dest_files=["res://.godot/imported/elemental1.png-98a2477c6c00127a9dff64becf471631.ctex"]
 
 [params]
 
