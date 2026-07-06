@@ -20,13 +20,27 @@ const ATTACKS = {
 		"effect": "none"
 	},
 	
-	
+	"quick_hit": {
+		"name": "Investida",
+		"damage": 9,
+		"cooldown": 2.0,
+		"type": "normal",
+		"effect": "none"
+	},
+
+	"focus_strike": {
+		"name": "Golpe Focado",
+		"damage": 16,
+		"cooldown": 5.5,
+		"type": "normal",
+		"effect": "none"
+	},
 	
 	# ========= FIRE =========
 	
 	"fireball": {
 		"name": "Bola de Fogo",
-		"damage": 160,
+		"damage": 17,
 		"cooldown": 6.0,
 		"type": "fogo",
 		"effect": "none"
@@ -40,7 +54,21 @@ const ATTACKS = {
 		"effect": "burn"
 	},
 	
-	
+	"ember_burst": {
+		"name": "Brasas",
+		"damage": 13,
+		"cooldown": 4.0,
+		"type": "fogo",
+		"effect": "none"
+	},
+
+	"flame_claw": {
+		"name": "Garra Flamejante",
+		"damage": 15,
+		"cooldown": 5.5,
+		"type": "fogo",
+		"effect": "none"
+	},
 	
 	# ========= WATER =========
 	
@@ -60,7 +88,21 @@ const ATTACKS = {
 		"effect": "freeze"
 	},
 	
-	
+	"water_drop": {
+		"name": "Bolhas d'Água",
+		"damage": 10,
+		"cooldown": 3.8,
+		"type": "água",
+		"effect": "none"
+	},
+
+	"tide_wave": {
+		"name": "Onda Marinha",
+		"damage": 16,
+		"cooldown": 6.5,
+		"type": "água",
+		"effect": "none"
+	},
 	
 	# ========= GRASS =========
 	
@@ -78,5 +120,39 @@ const ATTACKS = {
 		"cooldown": 8.0,
 		"type": "planta",
 		"effect": "paralyze"
+	},
+	
+	"vine_whip": {
+		"name": "Chicote de Cipó",
+		"damage": 12,
+		"cooldown": 4.5,
+		"type": "planta",
+		"effect": "none"
+	},
+
+	"seed_shot": {
+		"name": "Disparo de Sementes",
+		"damage": 15,
+		"cooldown": 6.0,
+		"type": "planta",
+		"effect": "none"
+	},
+	
+	# ========= ELEMENTAL =========
+
+	"elemental_spark": {
+		"name": "Pulso Elemental",
+		"damage": 13,
+		"cooldown": 4.5,
+		"type": "elemental",
+		"effect": "none"
+	},
+
+	"tri_element": {
+		"name": "Tríade Elemental",
+		"damage": 16,
+		"cooldown": 7.0,
+		"type": "elemental",
+		"effect": "none"
 	}
 }

@@ -5,6 +5,13 @@ class_name Creature
 @export var creature_id = "flameling"
 @onready var sprite = $Sprite2D
 
+const STATUS_NORMAL_COLOR = Color(1, 1, 1, 1)
+const STATUS_FREEZE_COLOR = Color(0.45, 0.85, 1.0, 1)
+const STATUS_PARALYZE_COLOR = Color(1.0, 0.95, 0.25, 1)
+const STATUS_BURN_COLOR = Color(1.0, 0.45, 0.15, 1)
+const STATUS_DAMAGE_COLOR = Color(1.0, 0.1, 0.1, 1)
+
+var damage_multiplier = 1.0
 var sprite_path = ""
 var creature_name = ""
 var creature_type = ""
@@ -16,9 +23,14 @@ var paralysis_message_cooldown = false
 var frozen_attack = ""
 var burn_active = false
 
+var floating_text_queue = []
+var floating_text_queue_running = false
+
 var attacks = []
 var attack_cooldowns = {}
 var global_attack_cooldown_max = 0.0
+var global_click_cooldown = 0.0
+var global_click_cooldown_time = 1.0
 var is_animating_attack = false
 var last_combo_text = ""
 
@@ -45,7 +57,14 @@ func _process(delta: float) -> void:
 			
 			if attack_cooldowns[attack_name] < 0:
 				attack_cooldowns[attack_name] = 0
+				
+	if global_click_cooldown > 0:
 
+		global_click_cooldown -= delta
+
+		if global_click_cooldown < 0:
+			global_click_cooldown = 0
+		
 func receive_damage(amount):
 	hp -= amount
 	
@@ -64,6 +83,10 @@ func receive_damage(amount):
 func attack(target: Creature, attack_data) -> bool:
 	
 	if is_animating_attack:
+		return false
+	
+	if global_click_cooldown > 0:
+		print("Aguarde para usar outro ataque!")
 		return false
 	
 	if attack_cooldowns[attack_data.name] > 0:
@@ -110,29 +133,32 @@ func attack(target: Creature, attack_data) -> bool:
 	
 	match attack_data.name:
 
-		"Arranhar":
+		"Arranhar", "Investida":
 			target.show_attack_effect("slash")
 
-		"Mordida":
+		"Mordida", "Golpe Focado":
 			target.show_attack_effect("hit_fogo")
 
-		"Bola de Fogo":
+		"Bola de Fogo", "Brasas", "Garra Flamejante":
 			target.show_attack_effect("bola_fogo")
 
 		"Bafo de Dragão":
 			target.show_attack_effect("bafo_dragao")
 
-		"Jato de Água":
+		"Jato de Água", "Bolhas d'Água", "Onda Marinha":
 			target.show_attack_effect("jato_agua")
 
 		"Chuva Congelada":
 			target.show_attack_effect("chuva_congelante")
 
-		"Folha Cortante":
+		"Folha Cortante", "Chicote de Cipó", "Disparo de Sementes":
 			target.show_attack_effect("folha_cortante")
 
 		"Raízes Paralisantes":
 			target.show_attack_effect("raiz_paralizante")
+
+		"Pulso Elemental", "Tríade Elemental":
+			target.show_attack_effect("bafo_dragao")
 		
 	target.receive_damage(final_damage)
 	
@@ -149,9 +175,8 @@ func attack(target: Creature, attack_data) -> bool:
 		
 	print(creature_name, " usou ", attack_data.name)
 	
-	for attack_name in attack_cooldowns.keys():
-
-		attack_cooldowns[attack_name] = attack_data.cooldown
+	attack_cooldowns[attack_data.name] = attack_data.cooldown
+	global_click_cooldown = global_click_cooldown_time
 	
 	return true
 	
@@ -194,24 +219,52 @@ func calculate_damage(target: Creature, base_damage, attack_type):
 		)
 		target.show_attack_effect("hit_fogo")
 		
+	final_damage = int(final_damage * damage_multiplier)
+	
 	return final_damage
 	
 func get_type_multiplier(target, attack_type):
 
 	if attack_type == "fogo" and target.creature_type == "planta":
-		return 1.2
+		return 1.4
 		
 	elif attack_type == "planta" and target.creature_type == "água":
-		return 1.2
+		return 1.4
 		
 	elif attack_type == "água" and target.creature_type == "fogo":
-		return 1.2
+		return 1.4
+
+	elif attack_type == "elemental" and target.creature_type in ["fogo", "água", "planta"]:
+		return 1.15
+
+	elif attack_type == "normal" and target.creature_type == "elemental":
+		return 1.4
+
+	elif attack_type == "elemental" and target.creature_type == "normal":
+		return 0.85
 		
 	elif attack_type == target.creature_type:
 		return 0.8
 		
 	else:
 		return 1.0
+
+func update_status_visual():
+
+	if sprite == null:
+		return
+
+	if is_paralyzed:
+		sprite.modulate = STATUS_PARALYZE_COLOR
+
+	elif frozen_attack != "":
+		sprite.modulate = STATUS_FREEZE_COLOR
+
+	elif burn_active:
+		sprite.modulate = STATUS_BURN_COLOR
+
+	else:
+		sprite.modulate = STATUS_NORMAL_COLOR
 		
 # Chama um func de efeito pra aplicar
 func apply_effect(effect_name, _attacker):
@@ -234,14 +287,20 @@ func apply_burn():
 		return
 		
 	burn_active = true
+
+	update_status_visual()
+
 	show_floating_text(
-		"QUEIMADO!",
-		Color.ORANGE
+		"QUEIMANDO!",
+		STATUS_BURN_COLOR
 	)
 	
-	for i in range(8):
+	for i in range(5):
 		
 		await get_tree().create_timer(1.0).timeout
+
+		if hp <= 0:
+			break
 		
 		receive_damage(2)
 
@@ -255,9 +314,15 @@ func apply_burn():
 		
 		
 	burn_active = false
+
+	update_status_visual()
 	
 # Aplica congelamento (agua)
 func apply_freeze():
+
+	if frozen_attack != "":
+		return
+
 	var available_attacks = []
 	
 	for attack_data in attacks:
@@ -271,9 +336,12 @@ func apply_freeze():
 	var selected_attack = available_attacks.pick_random()
 
 	frozen_attack = selected_attack.name
+
+	update_status_visual()
+
 	show_floating_text(
 		"CONGELADO!",
-		Color.CYAN
+		STATUS_FREEZE_COLOR
 	)
 
 	print(
@@ -283,25 +351,34 @@ func apply_freeze():
 		" congelado!"
 	)
 
-
 	await get_tree().create_timer(5.0).timeout
 
 	frozen_attack = ""
+
+	update_status_visual()
 	
 # Aplica paralisia (grama)
 func apply_paralyze():
 	
+	if is_paralyzed:
+		return
+
 	is_paralyzed = true
+
+	update_status_visual()
+
+	show_floating_text(
+		"PARALISADO!",
+		STATUS_PARALYZE_COLOR
+	)
 	
-	print(creature_name, " paralisado enão pode atacar!")
+	print(creature_name, " paralisado e não pode atacar!")
 	
 	await get_tree().create_timer(2.5).timeout
 	
 	is_paralyzed = false
-	show_floating_text(
-		"PARALISADO!",
-		Color.YELLOW
-	)
+
+	update_status_visual()
 
 # ========= Carregar creatures prontas ============
 func load_creature_data():
@@ -354,6 +431,42 @@ func show_floating_text(
 	color = Color.WHITE
 ):
 
+	floating_text_queue.append({
+		"message": message,
+		"color": color
+	})
+
+	if not floating_text_queue_running:
+		process_floating_text_queue()
+func process_floating_text_queue():
+
+	floating_text_queue_running = true
+
+	var current_slot = 0
+
+	while not floating_text_queue.is_empty():
+
+		var item = floating_text_queue.pop_front()
+
+		spawn_floating_text(
+			item["message"],
+			item["color"],
+			current_slot
+		)
+
+		current_slot += 1
+
+		await get_tree().create_timer(0.22).timeout
+
+	floating_text_queue_running = false
+
+
+func spawn_floating_text(
+	message,
+	color,
+	slot
+):
+
 	var damage_scene = preload(
 		"res://Scenes/DamageText.tscn"
 	)
@@ -364,9 +477,27 @@ func show_floating_text(
 		damage_text
 	)
 
+	var limited_slot = min(
+		slot,
+		4
+	)
+
+	var x_offset = 0
+
+	if limited_slot % 2 == 1:
+		x_offset = 22
+	elif limited_slot >= 2:
+		x_offset = -22
+
 	damage_text.global_position = (
-		Vector2(0, -60)
+		global_position +
+		Vector2(
+			x_offset,
+			-75 - limited_slot * 28
 		)
+	)
+
+	damage_text.z_index = 100 + limited_slot
 
 	damage_text.show_text(
 		message,
@@ -411,7 +542,7 @@ func play_damage_animation():
 
 	var original_pos = position
 
-	modulate = Color.RED
+	sprite.modulate = STATUS_DAMAGE_COLOR
 
 	var tween = create_tween()
 
@@ -440,13 +571,15 @@ func play_damage_animation():
 
 	await get_tree().create_timer(0.05).timeout
 
-	modulate = Color.WHITE
+	update_status_visual()
+
 	await get_tree().create_timer(0.05).timeout
 
-	modulate = Color.RED
+	sprite.modulate = STATUS_DAMAGE_COLOR
+
 	await get_tree().create_timer(0.05).timeout
 
-	modulate = Color.WHITE
+	update_status_visual()
 
 func play_death_animation():
 	var tween = create_tween()
